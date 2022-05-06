@@ -1,0 +1,3 @@
+# Aprendizados da semana
+
+Durante esta primeira semana de curso aprendi diversas coisas, entre elas: como a Labenu funciona, o que esperar do curso, como trabalhar com terminal, como trabalhar com Github. Mas o principal que aprendi é a não se desesperar e **confiar** no processo. Descobri que aprendo muito auxiliando os colegas com dificuldades que eu já compreendi e que eles também aprendem com as minhas dificuldades. Enfim foi uma semana intensa focada em adaptação e aprendizado.
