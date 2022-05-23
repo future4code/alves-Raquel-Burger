@@ -11,9 +11,10 @@ function retornaTamanhoArray(array) {
 
 // EXERCÍCIO 02
 function retornaArrayInvertido(array) {
-  
+    const arrayInvertido = array.reverse()
+    return arrayInvertido
 }
-
+    
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
   
