@@ -91,11 +91,22 @@ function retornaNPrimeirosPares(n) {
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
+    if((ladoA === ladoB) && (ladoA === ladoC)){
+        return "Equilátero"
+    }else if((ladoA !== ladoB) && (ladoA !== ladoC) && (ladoB !== ladoC)){
+        return "Escaleno"
+    }else{
+        return "Isósceles"
+    }
 
 }
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
+    const arrayOrdenado = array.sort((a, b) => a - b)
+    const novoArray = []
+    novoArray.push(arrayOrdenado[arrayOrdenado.length -2], arrayOrdenado[1])
+    return novoArray
   
 }
 
