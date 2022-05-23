@@ -14,10 +14,11 @@ function retornaArrayInvertido(array) {
     const arrayInvertido = array.reverse()
     return arrayInvertido
 }
-    
+
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-  
+    return array.sort((a, b) => a - b)
+   
 }
 
 // EXERCÍCIO 04
