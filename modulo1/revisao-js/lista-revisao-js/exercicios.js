@@ -41,7 +41,7 @@ function retornaNumerosParesElevadosADois(array) {
 
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-    let maior
+    let maior = - Infinity
     let i = 0
     for(let i = 0; i < array.length; i++){
         if(array[i] > maior){
@@ -49,12 +49,33 @@ function retornaMaiorNumero(array) {
         }
     }
     return maior
-  
 }
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    let maior
+    let menor
+    let divisivel
+    if(num1 > num2){
+        maior = num1
+        menor = num2
+    }else{
+        maior = num2
+        menor = num1
+    }
+    if(maior % menor === 0){
+        divisivel = true
+    }else{
+        divisivel = false
+    }
+    
+    const objeto = {
+        maiorNumero: maior,
+        maiorDivisivelPorMenor: divisivel,
+        diferenca: maior - menor
+    }
+    return objeto
+  
 }
 
 // EXERCÍCIO 08
