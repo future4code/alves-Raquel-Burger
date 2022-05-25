@@ -1,0 +1,68 @@
+header{
+    background-color: #99f8da;
+    padding: 30px;
+}
+.titulo{
+    background-color: #c7f3e5;
+    color: #212725;
+    padding: 10px;
+}
+nav{
+    background-color: #c7f3e5;
+    font-size: 30px;
+    color: #212725;
+}
+
+body{
+    background-color: #dff2ec;
+}
+
+.texto-inicial{
+    font-size: 30px;
+    color: #212725;
+}
+
+h2{
+    font-size: 30px;
+}
+
+table{
+    font-size: 30px;
+    
+}
+
+.tabela-funcionarios img{
+    max-width:256px;
+    max-height:256px;
+    width: auto;
+    height: auto;
+}
+
+.primeira-linha-tabela{
+    background-color: #99f8da;
+    margin-left: 1000px;
+}
+
+form, input, button{
+    font-size: 28px;
+    
+    
+}
+
+footer{
+    position: relative;
+    bottom: 0;
+    background-color: #99f8da;
+    font-size: 20px;
+    
+    width: 100%;
+    height: 100px;
+    
+}
+.logo img{
+    max-width:29px;
+    max-height:29px;
+    width: auto;
+    height: auto;
+    
+}
