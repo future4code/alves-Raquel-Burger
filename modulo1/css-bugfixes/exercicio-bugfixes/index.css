@@ -57,7 +57,7 @@ div>p:first-child {
 }
 
 .container {
-    height: 500px;
+    height: 400px;
     text-align: center;
 }
 
@@ -75,14 +75,28 @@ div>p:first-child {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
-    padding-top: 50px;
+    padding-top: 60px;
+  
     
+}
+
+#lista {
+    width: 250px;
+    text-align: center;
+    margin: 0 auto;
     
+}
+
+#lista>li{
+    margin: 10px;
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    
 }
+
+
 
 #container-para-comprar {
     background-color: #e7eb90;
