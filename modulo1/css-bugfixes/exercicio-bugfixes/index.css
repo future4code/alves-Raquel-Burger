@@ -47,7 +47,7 @@ div img {
 
 }
 
-.botao-amarelo:hover {
+.botao-amarelo, td button:hover {
     background-color: #c44f00;
 }
 
@@ -117,6 +117,7 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+
 }
 
 .container-do-search {
@@ -125,7 +126,6 @@ td button {
 }
 
 .container-do-search img {
-    width: 20px;
     background-color: white;
 }
 
