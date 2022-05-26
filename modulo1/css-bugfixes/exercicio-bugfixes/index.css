@@ -3,11 +3,21 @@
   *  ESTILOS GERAIS 
   *
   **/
-
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  }
 * {
     margin: 0;
     padding: 0;
+    font-family: Roboto;
 }
+
+
 
 h2 {
     background-color: #fe7e02;
@@ -21,7 +31,7 @@ input {
     width: 500px;
 }
 
-button:focus {
+button:active {
     color: white;
 }
 
@@ -33,9 +43,7 @@ div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
-}
+
 
 .botao-amarelo {
     background-color: #ffaf43;
@@ -123,10 +131,18 @@ td button {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+    
 }
 
 .container-do-search img {
     background-color: white;
+    max-width: 29px;
+}
+
+#caixa-texto{
+    border: 0;
+    border-bottom: solid;
+
 }
 
 #back-button {
