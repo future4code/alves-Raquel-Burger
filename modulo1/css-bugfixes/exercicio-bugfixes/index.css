@@ -63,6 +63,13 @@ div>p:first-child {
 
 .icone {
     height: 15px;
+    max-width: 15px;
+}
+.icone:hover{
+    opacity: 0.5;
+}
+.icone:active{
+    opacity: 1;
 }
 
 
@@ -150,10 +157,6 @@ td button {
     
 }
 
-.container-do-search img {
-    background-color: white;
-    max-width: 29px;
-}
 
 #caixa-texto{
     border: 0;
