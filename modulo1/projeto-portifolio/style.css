@@ -1,0 +1,120 @@
+/* Css Geral */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+@font-face {
+    font-family: "Rockabye-Regular";
+    src: url('./Fontes/Rockabye-Regular.otf') format('truetype');
+}
+
+body {
+    background-color: #fbede0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cabecario {
+    color: #fbede0;
+    background-color: #6f79b8;
+    padding: 15px;
+    text-align: center;
+    font-family: "Rockabye-Regular";
+    font-size: 35px;
+}
+
+nav {
+    background-color: #e9d2e1;
+    color: #6f79b8;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.nav-link {
+    margin: 0 50px;
+}
+
+.nav-link:hover {
+    font-size: 23px;
+}
+
+.nav-link:active {
+    color: #00b0b8;
+}
+
+/* Index - Home */
+
+.texto-home {
+    margin-top: 30px;
+}
+.foto-perfil img {
+    max-width: 350px;
+    max-height: 400px;
+}
+.foto-perfil{
+    text-align: right;
+    display: block;
+    margin-right: 200px;
+    margin-top: 30px;
+}
+
+/* Sobre */
+.sobre-mim {
+    text-align: justify;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+.trajetoria {
+    text-align: justify;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+/* Projetos */
+
+.black{
+    text-align:center ;
+    margin-bottom: 15px;
+    margin-top: 15px;    
+}
+
+.tela-black {
+    text-align: center;
+    margin-right: 5px;
+}
+
+.loja {
+    text-align:center ;
+    margin-bottom: 15px;
+    margin-top: 15px;  
+}
+
+/* Contato */
+.formulario {
+    text-align: justify;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 5px;
+    
+}
+
+#nome, #email, #telefone, #mensagem {
+margin-bottom: 10px;
+font-size: 15px;
+width: 250px;
+}
+
+/* Footer */
+#logo-git img,
+#logo-link img {
+    max-width: 80px;
+    max-height: 19.5px;
+    margin-right: 15px;
+}
+
+footer {
+    bottom: 0;
+    position: relative;
+}
