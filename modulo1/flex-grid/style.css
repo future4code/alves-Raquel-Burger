@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: mediumvioletred;
+    height: 24px;
+    max-width: 100%;
+    display: flex;
+    padding: 8px;
+    gap: 8px;
+
+}
+
+header img {
+    max-width: 18px;
+    max-height: 18px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 10%;
+}
+
+header button {
+    max-height: 18px;
+    max-width: 40px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 10%;
+    font-size: 10px;
+}
+
+header h3 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 90%;
+
+}
+
+nav>ul {
+    display: flex;
+    background-color: #f2d0e0;
+    gap: 10px;
+    flex-direction: column;
+    height: 100vh;
+    width: 200px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+nav img {
+    max-width: 18px;
+
+}
+
+.card-bolo img{
+    max-width: 250px;
+}
+
+.card-bolo {
+    border: 1px black solid;
+    width: 250px;
+    box-shadow: 5px 5px 5px darkgray;
+
+}
+main{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+
+}
+
+
+
+footer {
+    background-color: mediumvioletred;
+    height: 24px;
+    max-width: 100%;
+    padding: 8px;
+    text-align: center;
+}
