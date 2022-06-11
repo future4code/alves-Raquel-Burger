@@ -17,7 +17,7 @@ export class SecaoComentario extends Component {
 		comentario: ''
 	}
 
-	onChangeComentario(event) {
+	onChangeComentario = (event) => {
 		console.log(event.target.value)
 	}
 

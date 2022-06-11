@@ -7,7 +7,8 @@ import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 import bookmarkBlack from '../../img/bookmarkBlack.svg'
 import bookmarkWhite from '../../img/bookmarkWhite.svg'
-
+import SecaoCompartilhar from '../SecaoCompartilhar/SecaoCompartilhar'
+import send_black from '../../img/send_black.svg'
 const PostContainer = styled.div`
   border: 1px solid gray;
   width: 300px;
@@ -46,7 +47,8 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    salvo: false
+    salvo: false,
+    share: false
   }
 
   onClickCurtida = () => {
@@ -83,6 +85,12 @@ class Post extends React.Component {
     })
   }
 
+   onClickShare = () => {
+    this.setState({
+      share: !this.state.share
+    })
+   }
+
   render() {
     let iconeCurtida
 
@@ -90,12 +98,6 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
-    }
-
-    let componenteComentario
-
-    if(this.state.comentando) {
-      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
 
     let iconeSalvo
@@ -106,6 +108,20 @@ class Post extends React.Component {
       iconeSalvo = bookmarkWhite
     }
 
+    let componenteShare
+    
+    if(this.state.share) {
+      componenteShare = <SecaoCompartilhar/>
+    }
+
+
+    let componenteComentario
+
+    if(this.state.comentando) {
+      componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    }
+
+  
     return <PostContainer>
       <PostHeader>
         <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
@@ -126,6 +142,12 @@ class Post extends React.Component {
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
+
+        <IconeComContador
+        icone = {send_black}
+        onClickIcone = {this.onClickShare}
+        />
+
          <IconeComContador
           icone = {iconeSalvo}
           onClickIcone={this.onClikSalvo}
