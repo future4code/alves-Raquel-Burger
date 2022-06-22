@@ -2,17 +2,29 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
-
+const ContainerUser = styled.div`
+  border: 1px black dotted;
+  display: flex;
+  height: 40px;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+`
+const Button = styled.button`
+  height: 20px;
+  
+`
 
 export default class TelaDetalhes extends Component {
   render() {
     const listUsers = this.props.users.map((user) => {
        
         return (
-        <div key={user.id}>
+        <ContainerUser key={user.id}>
             <p>Nome: {user.name}</p>
-            <button onClick={() => {this.props.delete(user.id)}}>Delete</button>
-        </div>
+            <Button onClick={() => {this.props.delete(user.id)}}>Delete</Button>
+        </ContainerUser>
         )
     })
     return (
