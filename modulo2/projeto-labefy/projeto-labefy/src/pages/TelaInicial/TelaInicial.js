@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/urls'
-import { ContainerInicial, ContainerPlaylist, ContainerTela, TituloLabefy, Input, TituloPlaylist, Button, ContainerPlaylists } from './styled.js'
-
+import { ContainerInicial, Icones, ContainerExcluir, ContainerPlaylist, ContainerTela, TituloLabefy, Input, TituloPlaylist, Button, ContainerPlaylists } from './styled.js'
+import { BsTrash } from 'react-icons/bs'
 
 export default class TelaInicial extends Component {
     state = {
@@ -55,7 +55,6 @@ export default class TelaInicial extends Component {
     novoNomePlaylist = (event) => {
         this.setState({ nomePlaylist: event.target.value })
     }
-
     deletaPlaylist = (id) => {
         if (window.confirm("Tem certeza que deseja apagar esta playlist? ")) {
             axios.delete
@@ -79,13 +78,14 @@ export default class TelaInicial extends Component {
     render() {
         const listaPlaylist = this.state.playlists.map((playlist) => {
             return (
-                <ContainerPlaylist 
-                key={playlist.id}>   
-                <div onClick={() => this.props.mudarTelaDetalhes(playlist.id)}>
-                    {playlist.name}
-                </div>
-                    <Button onClick={() => this.deletaPlaylist(playlist.id)}>Excluir</Button>
-                </ContainerPlaylist>
+                <ContainerExcluir>
+                    <ContainerPlaylist
+                        key={playlist.id}
+                        onClick={() => this.props.mudarTelaDetalhes(playlist.id)}>
+                        {playlist.name}
+                    </ContainerPlaylist>
+                    <Icones onClick={() => this.deletaPlaylist(playlist.id)}><BsTrash /></Icones>
+                </ContainerExcluir>
             )
         })
         return (
@@ -105,8 +105,6 @@ export default class TelaInicial extends Component {
                     <ContainerPlaylists>
                         {listaPlaylist}
                     </ContainerPlaylists>
-
-
                 </ContainerInicial>
             </ContainerTela>
         )

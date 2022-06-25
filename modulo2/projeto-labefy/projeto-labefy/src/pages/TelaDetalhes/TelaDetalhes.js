@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { BASE_URL } from '../../constants/urls'
-import { ContainerTela, Player, ContainerInicial, ContainerInputs, ContainerPlaylist, Input, Button, TituloPlaylist, ContainerPlaylists } from './styled'
+import { ContainerTela, Player, ContainerPlayer, ContainerInicial, ContainerTitulo, ContainerInputs, ContainerPlaylist, Input, Button, TituloPlaylist, ContainerPlaylists, Icones } from './styled'
+import { GiReturnArrow } from 'react-icons/gi'
+import { BsTrash } from 'react-icons/bs'
 
 export default class TelaDetalhes extends Component {
   state = {
@@ -9,7 +11,6 @@ export default class TelaDetalhes extends Component {
     titulo: "",
     artista: "",
     url: ""
-
   }
   componentDidMount() {
     this.mostraPlaylistTrack()
@@ -49,7 +50,7 @@ export default class TelaDetalhes extends Component {
         this.mostraPlaylistTrack()
       })
       .catch((erro) => {
-        console.log(erro.response)
+        alert(erro.response.data)
       })
   }
 
@@ -67,10 +68,9 @@ export default class TelaDetalhes extends Component {
         this.mostraPlaylistTrack()
       })
       .catch((erro) => {
-        console.log(erro.response.data)
+        alert(erro.response.data)
       })
   }
-
   onChangeArtista = (event) => {
     this.setState({ artista: event.target.value })
   }
@@ -80,15 +80,16 @@ export default class TelaDetalhes extends Component {
   onChangeUrl = (event) => {
     this.setState({ url: event.target.value })
   }
-
   render() {
     const listaMusicas = this.state.musicas.map((musica) => {
       return (
         <ContainerPlaylist key={musica.id}>
-          <p>Musica: {musica.name}</p>
-          <p>Artista: {musica.artist}</p>
-          <Player src={musica.url} controls />
-          <Button onClick={() => this.deletaTrack(musica.id)}>X</Button>
+          <p>{musica.artist}</p>
+          <p>{musica.name}</p>
+          <Icones onClick={() => this.deletaTrack(musica.id)}><BsTrash /></Icones>
+          <ContainerPlayer>
+            <Player src={musica.url} controls />
+          </ContainerPlayer>
         </ContainerPlaylist>
       )
     })
@@ -96,27 +97,30 @@ export default class TelaDetalhes extends Component {
 
       <ContainerTela>
         <ContainerInicial>
-          <TituloPlaylist>Minhas Músicas</TituloPlaylist>
+          <ContainerTitulo>
+            <Icones onClick={this.props.mudarTelaInical}><GiReturnArrow /></Icones>
+            <TituloPlaylist>Minhas Músicas</TituloPlaylist>
+          </ContainerTitulo>
           <ContainerInputs>
-          <Input
-            value={this.state.artista}
-            onChange={this.onChangeArtista}
-            placeholder="Digite o artista"
-          ></Input>
-          <Input
-            value={this.state.titulo}
-            onChange={this.onChangeTitulo}
-            placeholder="Digite o título"
-          ></Input>
-          <Input
-            value={this.state.url}
-            onChange={this.onChangeUrl}
-            placeholder="Url MP3"
-          ></Input>
+            <Input
+              value={this.state.artista}
+              onChange={this.onChangeArtista}
+              placeholder="Digite o artista"
+            ></Input>
+            <Input
+              value={this.state.titulo}
+              onChange={this.onChangeTitulo}
+              placeholder="Digite o título"
+            ></Input>
+            <Input
+              value={this.state.url}
+              onChange={this.onChangeUrl}
+              placeholder="Url MP3"
+            ></Input>
           </ContainerInputs>
           <Button onClick={this.adicionaTrack}>Adicionar Música</Button>
           <ContainerPlaylists>
-          {listaMusicas}
+            {listaMusicas}
           </ContainerPlaylists>
         </ContainerInicial>
       </ContainerTela>
