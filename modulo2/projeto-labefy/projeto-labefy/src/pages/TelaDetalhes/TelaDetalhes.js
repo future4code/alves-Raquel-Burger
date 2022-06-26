@@ -48,6 +48,7 @@ export default class TelaDetalhes extends Component {
       )
       .then((resposta) => {
         this.mostraPlaylistTrack()
+        this.setState({titulo: "", artista: "", url: ""})
       })
       .catch((erro) => {
         alert(erro.response.data)
@@ -88,7 +89,7 @@ export default class TelaDetalhes extends Component {
           <p>{musica.name}</p>
           <Icones onClick={() => this.deletaTrack(musica.id)}><BsTrash /></Icones>
           <ContainerPlayer>
-            <Player src={musica.url} controls />
+            <Player ref="audio_tag" src={musica.url} controls />
           </ContainerPlayer>
         </ContainerPlaylist>
       )
