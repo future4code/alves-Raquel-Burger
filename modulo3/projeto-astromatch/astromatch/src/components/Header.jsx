@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Button, HeaderAstro } from "./Styled";
+import { Button, HeaderAstro, Titulo } from "./Styled";
+import Matches from "../assets/matches.png"
+import Home from "../assets/home.png"
 
 function Header({ changeScreenMatches, changeScreenHome, currentScreen }) {
     const [textButton, setTextButton] = useState("Home")
@@ -7,14 +9,14 @@ function Header({ changeScreenMatches, changeScreenHome, currentScreen }) {
     useEffect(() => {
         if (currentScreen === "home") {
             return (
-                setTextButton("Matches")
+                setTextButton(<img src = {Matches} height='40px' width='40px'/>)
             )
         } else {
             return (
-                setTextButton("Home")
+                setTextButton(<img src = {Home} height='40px' width='40px'/>)
             )
         }
-    }, [textButton, currentScreen])
+    }, [ currentScreen])
 
     const onClickButton = () => {
         if (currentScreen === "home") {
@@ -26,8 +28,8 @@ function Header({ changeScreenMatches, changeScreenHome, currentScreen }) {
 
     return (
         <HeaderAstro>
-            <h1>Astromatch</h1>
-            <Button onClick={onClickButton()}>{textButton}</Button>
+            <Titulo>Astromatch</Titulo>
+            <Button type="button" onClick={onClickButton()}>{textButton}</Button>
         </HeaderAstro>
     )
 }
