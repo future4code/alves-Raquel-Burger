@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Matches from "./components/Matches";
+import { ContainerApp, ContainerCardApp } from "./components/Styled"
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState("home")
@@ -25,10 +26,12 @@ function App() {
     }
   }
   return (
-    <div >
-      <Header currentScreen={currentScreen} changeScreenMatches={changeScreenMatches} changeScreenHome={changeScreenHome} />
-      {selectScreen()}
-    </div>
+    <ContainerApp>
+      <ContainerCardApp>
+        <Header currentScreen={currentScreen} changeScreenMatches={changeScreenMatches} changeScreenHome={changeScreenHome} />
+        {selectScreen()}
+      </ContainerCardApp>
+    </ContainerApp>
   );
 }
 

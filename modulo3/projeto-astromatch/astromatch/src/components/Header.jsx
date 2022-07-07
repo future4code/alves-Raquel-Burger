@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button, HeaderAstro } from "./Styled";
 
 function Header({ changeScreenMatches, changeScreenHome, currentScreen }) {
     const [textButton, setTextButton] = useState("Home")
@@ -6,7 +7,7 @@ function Header({ changeScreenMatches, changeScreenHome, currentScreen }) {
     useEffect(() => {
         if (currentScreen === "home") {
             return (
-                setTextButton("Matched")
+                setTextButton("Matches")
             )
         } else {
             return (
@@ -24,9 +25,10 @@ function Header({ changeScreenMatches, changeScreenHome, currentScreen }) {
     }
 
     return (
-        <div>
-            <button onClick={onClickButton()}>{textButton}</button>
-        </div>
+        <HeaderAstro>
+            <h1>Astromatch</h1>
+            <Button onClick={onClickButton()}>{textButton}</Button>
+        </HeaderAstro>
     )
 }
 
