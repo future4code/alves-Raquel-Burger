@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BASE_URL } from "../constants/urls"
 import axios from 'axios'
 import Clear from './Clear'
+import { CardMatches, CardScroll } from './Styled'
 
 
 const Matches = () => {
@@ -22,17 +23,18 @@ const Matches = () => {
 
   const showMatches = usersMatches.map((user) => {
     return(
-      <div>
+      <CardMatches key={user.id}>
       <img src={user.photo} alt={user.name} />
       <p>{user.name}</p>
-      </div>
+      <p>Oi, sumida!</p>
+      </CardMatches>
     )
   })
   return (
-    <div>
+    <CardScroll>
       {showMatches}
       <Clear />
-    </div>
+    </CardScroll>
   )
 }
 

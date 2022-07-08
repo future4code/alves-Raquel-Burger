@@ -1,6 +1,8 @@
 import React from 'react'
 import { BASE_URL } from '../constants/urls'
 import axios from 'axios'
+import Reset from '../assets/reset.png'
+import { Button, ContainerClear } from './Styled'
 
 function Clear(props) {
     const clearMatches = () => {
@@ -11,14 +13,14 @@ function Clear(props) {
         .catch((error) => {
             console.log(error)
         })
-        props.getUsers()
+        {props.getUsers()}
       }
     
 
   return (
-    
-    <button onClick={() => clearMatches()}>Resetar</button>
-
+    <ContainerClear>
+    <Button onClick={() => clearMatches()}><img src={Reset} height='50px' width='50px'/></Button>
+    </ContainerClear>
   )
 }
 

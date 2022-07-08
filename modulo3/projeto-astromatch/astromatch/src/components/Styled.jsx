@@ -49,21 +49,20 @@ export const ContainerHome = styled.section`
     max-height: 98%;
 `
 
-
 export const Image = styled.img`
-    height: 100%;
-    width: 100%;
+    height: 25rem;
+    width: 85%;
     object-fit: contain, cover;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;    
     margin-top: 0.5rem;
-    transition: all 0.7s ease-in;
-  ${(props) => props.imgEffect && "transform: translate(15rem, 5rem) rotate(15deg)"};
-  ${(props) => props.imgEffect && "opacity: 1"};
-`
-export const ImageContainer = styled.section`
-    height: 25rem;
-    width: 85%;
+    transition: all 2s ease;
+  ${(props) => props.likeDislike ==="like" && "transform: translate(15rem, 5rem) rotate(22deg)"};
+  ${(props) => props.likeDislike ==="like" && "opacity: 0"};
+  ${(props) => props.likeDislike ==="normal" && ""};
+  ${(props) => props.likeDislike ==="dislike"  && "transform: translate(-15rem, 5rem) rotate(-22deg)"};
+  ${(props) => props.likeDislike ==="dislike" && "opacity: 0"};
+
 `
 
 export const TextContainer = styled.section`
@@ -80,4 +79,54 @@ export const ButtonContainer = styled.section`
     width: 80%;
     justify-content: space-between;
     align-items: flex-end;
+`
+
+// Macthes
+export const CardScroll = styled.div`
+    width: 95%;
+    height: 80%;
+    overflow-y: scroll;
+    margin-top: 1rem;
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+    &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+
+    }
+    &::-webkit-scrollbar-thumb {
+    background-color: rgba(15, 242, 242, 0.4);
+    border-radius: 10px;
+    }
+
+`
+export const CardMatches = styled.section`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding-right: 0.5rem;
+    img{
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    object-fit: cover;
+    border: 2px dotted #49bab5 ;
+    padding: 2px;
+    margin: 2px;
+    }
+ `
+
+// Clear
+
+export const ContainerClear = styled.section`
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 `
