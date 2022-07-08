@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
         background-color: #edebf0;
     }
 `
-
 function App() {
   const [currentScreen, setCurrentScreen] = useState("home")
 
@@ -33,29 +32,28 @@ function App() {
         return <Matches />
       default:
         return "pagina não encontrada"
-
     }
   }
   return (
     <div>
       <GlobalStyle />
-       <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-    <ContainerApp>
-      <ContainerCardApp>
-        <Header currentScreen={currentScreen} changeScreenMatches={changeScreenMatches} changeScreenHome={changeScreenHome} />
-        {selectScreen()}
-      </ContainerCardApp>
-    </ContainerApp>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <ContainerApp>
+        <ContainerCardApp>
+          <Header currentScreen={currentScreen} changeScreenMatches={changeScreenMatches} changeScreenHome={changeScreenHome} />
+          {selectScreen()}
+        </ContainerCardApp>
+      </ContainerApp>
     </div>
   );
 }

@@ -49,11 +49,11 @@ export const Image = styled.img`
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;    
     margin-top: 0.5rem;
     transition: all 2s ease;
-  ${(props) => props.likeDislike ==="like" && "transform: translate(15rem, 5rem) rotate(22deg)"};
-  ${(props) => props.likeDislike ==="like" && "opacity: 0"};
-  ${(props) => props.likeDislike ==="normal" && ""};
-  ${(props) => props.likeDislike ==="dislike"  && "transform: translate(-15rem, 5rem) rotate(-22deg)"};
-  ${(props) => props.likeDislike ==="dislike" && "opacity: 0"};
+  ${(props) => props.likeDislike === "like" && "transform: translate(15rem, 5rem) rotate(22deg)"};
+  ${(props) => props.likeDislike === "like" && "opacity: 0"};
+  ${(props) => props.likeDislike === "normal" && ""};
+  ${(props) => props.likeDislike === "dislike" && "transform: translate(-15rem, 5rem) rotate(-22deg)"};
+  ${(props) => props.likeDislike === "dislike" && "opacity: 0"};
 
 `
 export const TextContainer = styled.section`
@@ -108,7 +108,7 @@ export const CardMatches = styled.section`
     margin: 2px;
     }
  `
- export const ContainerRaquel = styled.section`
+export const ContainerRaquel = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;

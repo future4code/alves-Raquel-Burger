@@ -5,8 +5,6 @@ import Clear from './Clear'
 import { CardMatches, CardScroll, ContainerRaquel } from './Styled'
 import Linkedin from '../assets/linkedin.png'
 
-
-
 const Matches = () => {
   const [usersMatches, setUsersMatches] = useState([])
   const getMatches = () => {
@@ -32,6 +30,7 @@ const Matches = () => {
       </CardMatches>
     )
   })
+
   return (
     <CardScroll>
       {showMatches}
