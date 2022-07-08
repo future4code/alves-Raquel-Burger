@@ -5,7 +5,9 @@ import { ContainerHome, Image, TextContainer, Button, ButtonContainer } from './
 import Clear from './Clear'
 import AddHeart from '../assets/Addheart.png'
 import No from '../assets/no.png'
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import Fire from '../assets/fire.png'
 
 const Home = () => {
   const [users, setUsers] = useState({})
@@ -47,7 +49,9 @@ const Home = () => {
           setDislikeSlide()
         }
         if (res.data.isMatch) {
-          alert("deu match")
+          toast(`Uhul, você teve um match com ${users.name}!`, {
+            icon: <img src = {Fire} height='25px' width='25px' />
+          })
         }
         getUsers()
 

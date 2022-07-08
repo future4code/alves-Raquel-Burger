@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Matches from "./components/Matches";
 import { ContainerApp, ContainerCardApp } from "./components/Styled"
 import { createGlobalStyle } from "styled-components";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -37,6 +39,17 @@ function App() {
   return (
     <div>
       <GlobalStyle />
+       <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     <ContainerApp>
       <ContainerCardApp>
         <Header currentScreen={currentScreen} changeScreenMatches={changeScreenMatches} changeScreenHome={changeScreenHome} />

@@ -3,12 +3,14 @@ import { BASE_URL } from '../constants/urls'
 import axios from 'axios'
 import Reset from '../assets/reset.png'
 import { Button, ContainerClear } from './Styled'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Clear(props) {
     const clearMatches = () => {
         axios.put(`${BASE_URL}clear`)
           .then((response) => {
-            alert("Perfis resetados!")
+            toast.info("Perfis resetados com sucesso!")
         })
         .catch((error) => {
             console.log(error)
