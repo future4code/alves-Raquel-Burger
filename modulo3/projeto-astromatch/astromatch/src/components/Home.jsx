@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BASE_URL } from "../constants/urls"
 import axios from 'axios'
-import { ContainerHome, Image, TextContainer, Button, ButtonContainer } from './Styled'
+import { ContainerHome, Image, TextContainer, Button, ButtonContainer, ButtonLike } from './Styled'
 import Clear from './Clear'
 import AddHeart from '../assets/Addheart.png'
 import No from '../assets/no.png'
@@ -75,7 +75,7 @@ const Home = () => {
           </TextContainer>
           <ButtonContainer>
             <Button type='button' onClick={() => choosePerson(false)}><img src={No} height='40px' width='40px' /></Button>
-            <Button type='button' onClick={() => choosePerson(true)}><img src={AddHeart} height='40px' width='40px' /></Button>
+            <ButtonLike type='button' onClick={() => choosePerson(true)}><img src={AddHeart} height='40px' width='40px' /></ButtonLike>
           </ButtonContainer>
         </ContainerHome>)
         :

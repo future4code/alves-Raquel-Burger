@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
 // app
 export const ContainerApp = styled.section`
@@ -31,6 +32,21 @@ export const Button = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
+`
+const breatheAnimation = keyframes`
+ 0% { transform: scale(.3) }
+ 30% { transform: scale(.5) }
+ 40% { transform: scale(.7) }
+ 100% { transform: scale(1)}
+`
+export const ButtonLike = styled.button`
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    animation-name: ${breatheAnimation};
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    
 `
 // Home
 export const ContainerHome = styled.section`
