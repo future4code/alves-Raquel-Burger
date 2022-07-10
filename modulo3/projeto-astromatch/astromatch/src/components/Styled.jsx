@@ -32,20 +32,24 @@ export const Button = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    :hover{
+        transform: scale(1.5);
+    }
 `
 const breatheAnimation = keyframes`
  0% { transform: scale(.3) }
- 30% { transform: scale(.5) }
- 40% { transform: scale(.7) }
- 100% { transform: scale(1)}
+ 50% { transform: scale(.7) }
+ 100% { transform: scale(1.5)}
 `
 export const ButtonLike = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
-    animation-name: ${breatheAnimation};
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
+    &:hover{
+        animation-name: ${breatheAnimation};
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
     
 `
 // Home
