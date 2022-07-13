@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Admin() {
+function AdminPage() {
   return (
     <div>Admin</div>
   )
 }
 
-export default Admin
+export default AdminPage
