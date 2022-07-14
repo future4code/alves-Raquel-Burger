@@ -1,6 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
-import {goBack, goToCreateTrip, goToLogin} from '../../routes/coordinator.js'
+import {goBack, goToCreateTrip, goToLogin, goToDetails} from '../../routes/coordinator.js'
 import { BASE_URL } from '../../constants/urls'
 import UseRequestData from '../../hooks/UseRequestData'
 
@@ -21,13 +21,13 @@ function AdminPage() {
       return (
         listTrip.trips.map((trip) => {
           return (
-            <div onClick = {''} key={trip.id}>
+            <div key={trip.id}>
               <p>{trip.name}</p>
               <p>{trip.description}</p>
               <p>{trip.planet}</p>
               <p>{trip.duration}</p>
               <p>{trip.date}</p>
-              <button>Ver detalhes</button>
+              <button onClick={() => goToDetails(navigate, trip.id)}>Ver detalhes</button>
               <button>Deletar</button>
             </div>
           )

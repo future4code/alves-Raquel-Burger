@@ -18,10 +18,10 @@ const Router = () => {
       <Route path="trips/list" element={<ListTripsPage />} />
       <Route path="trips/application" element={<ApplicationFormPage />} />
       <Route path="login" element={<LoginPage />} />
-      <Route path="admin/trips/list" element={<AdminPage />} />
+      <Route path="admin/trips" element={<AdminPage />} />
       <Route path="admin/trips/:id" element={<TripDetailsPage />} />
       <Route path="admin/trips/create" element={<CreateTripPage />} />
-      <Route path="*" element={"Página não encontrada"} />
+      {/* <Route path="*" element={"Página não encontrada"} /> */}
     </Routes>
   </BrowserRouter>
   )

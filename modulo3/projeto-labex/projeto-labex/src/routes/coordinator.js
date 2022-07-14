@@ -11,13 +11,13 @@ export const goToLogin = (navigate) => {
     navigate("/login")
 }
 export const goToAdmin = (navigate) => {
-    navigate("/admin/trips/list")
+    navigate("/admin/trips")
 }
 export const goToCreateTrip = (navigate) => {
     navigate("/admin/trips/create")
 }
 export const goToDetails = (navigate, id) => {
-    navigate(`admin/trips/${id}`)
+    navigate(`/admin/trips/${id}`)
 }
 export const goBack = (navigate) => {
     navigate(-1)

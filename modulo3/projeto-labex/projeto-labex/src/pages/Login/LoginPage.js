@@ -10,6 +10,7 @@ function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState ("")
 
+
   const onChangeEmail = (event) => {
     setEmail(event.target.value)
   }
@@ -26,7 +27,8 @@ function LoginPage() {
     }
     axios.post(`${BASE_URL}login`, body)
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data.token)
+        localStorage.setItem('token', response.data.token)
       })
       .catch((error) => {
         console.log(error.response)

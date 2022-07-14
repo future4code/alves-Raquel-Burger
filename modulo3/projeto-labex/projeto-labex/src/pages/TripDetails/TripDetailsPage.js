@@ -5,14 +5,20 @@ import axios from 'axios'
 
 function TripDetailsPage() {
   const pathParams = useParams()
-
+  console.log(pathParams)
   useEffect(() => {
-    axios.get(`${BASE_URL}${pathParams}`)
+    const token = localStorage.getItem('token')
+    axios.get(`${BASE_URL}trip/${pathParams.id}`, {
+      headers: {
+        auth: token
+      }
+    }
+   )
     .then((res) => {
       console.log(res)
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err.response)
     })
   }, [pathParams])
   return (
