@@ -1,6 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
-import {goToListTrips, goToAdmin} from '../../routes/coordinator'
+import {goToListTrips, goToAdmin} from '../../routes/coordinator.js'
 
 function HomePage() {
   const navigate = useNavigate()

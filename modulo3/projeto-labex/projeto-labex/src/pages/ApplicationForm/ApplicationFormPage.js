@@ -1,18 +1,18 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
-import {goBack, goToAdmin} from '../../routes/coordinator'
+import {goBack} from '../../routes/coordinator.js'
 
 
-
-function LoginPage() {
+function ApplicationFormPage() {
   const navigate = useNavigate()
+
   return (
     <div>
-      LoginPage
+      Inscrever-se para uma viagem
       <button onClick={() => goBack(navigate)}>Voltar</button>
-      <button onClick={() => goToAdmin(navigate)}>Entrar</button>
+      <button onClick={''}>Enviar</button>
     </div>
   )
 }
 
-export default LoginPage
+export default ApplicationFormPage

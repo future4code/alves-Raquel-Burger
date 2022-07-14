@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../components/Header/Header';
 import AdminPage from "../pages/Admin/AdminPage";
 import ApplicationFormPage from "../pages/ApplicationForm/ApplicationFormPage";
 import CreateTripPage from "../pages/CreateTrip/CreateTripPage";
@@ -11,6 +12,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 const Router = () => {
   return (
     <BrowserRouter>
+    <Header />
     <Routes>
       <Route index element={<HomePage />} />
       <Route path="trips/list" element={<ListTripsPage />} />
@@ -20,7 +22,6 @@ const Router = () => {
       <Route path="admin/trips/:id" element={<TripDetailsPage />} />
       <Route path="admin/trips/create" element={<CreateTripPage />} />
       <Route path="*" element={"Página não encontrada"} />
-
     </Routes>
   </BrowserRouter>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import {goBack} from '../../routes/coordinator'
+import {goBack} from '../../routes/coordinator.js'
 import {useNavigate} from 'react-router-dom'
 
 

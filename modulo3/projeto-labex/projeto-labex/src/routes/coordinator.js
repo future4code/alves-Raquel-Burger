@@ -3,20 +3,22 @@ export const goToIndex = (navigate) => {
 }
 export const goToListTrips = (navigate) => {
     navigate("/trips/list")
-  }
-  export const goToApplicationForm = (navigate) => {
-      navigate("/trips/application")
-    }
-export const goToAdmin = (navigate) => {
-    navigate("/admin/trips/list")
-  }
-export const goToCreateTrip = (navigate) => {
-    navigate("/admin/trips/create")
+}
+export const goToApplicationForm = (navigate) => {
+    navigate("/trips/application")
 }
 export const goToLogin = (navigate) => {
     navigate("/login")
 }
-
+export const goToAdmin = (navigate) => {
+    navigate("/admin/trips/list")
+}
+export const goToCreateTrip = (navigate) => {
+    navigate("/admin/trips/create")
+}
+export const goToDetails = (navigate, id) => {
+    navigate(`admin/trips/${id}`)
+}
 export const goBack = (navigate) => {
     navigate(-1)
-  }
+}
