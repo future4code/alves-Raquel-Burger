@@ -2,7 +2,7 @@ import React from 'react'
 
 function TripDetailsPage() {
   return (
-    <div>TripDetailsPage</div>
+    <div>Detalhes da viagem</div>
   )
 }
 

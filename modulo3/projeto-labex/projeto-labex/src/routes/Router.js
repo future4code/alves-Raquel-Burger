@@ -13,12 +13,12 @@ const Router = () => {
     <BrowserRouter>
     <Routes>
       <Route index element={<HomePage />} />
-      <Route path="listTrips" element={<ListTripsPage />} />
-      <Route path="application" element={<ApplicationFormPage />} />
+      <Route path="trips/list" element={<ListTripsPage />} />
+      <Route path="trips/application" element={<ApplicationFormPage />} />
       <Route path="login" element={<LoginPage />} />
-      <Route path="admin" element={<AdminPage />} />
-      <Route path="createTrip" element={<CreateTripPage />} />
-      <Route path="tripDetails" element={<TripDetailsPage />} />
+      <Route path="admin/trips/list" element={<AdminPage />} />
+      <Route path="admin/trips/:id" element={<TripDetailsPage />} />
+      <Route path="admin/trips/create" element={<CreateTripPage />} />
       <Route path="*" element={"Página não encontrada"} />
 
     </Routes>
