@@ -2,11 +2,14 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../../constants/urls'
+import UseProtectedPage from '../../hooks/UseProtectedPage'
 
 function TripDetailsPage() {
   const pathParams = useParams()
   const [trip, setTrip] = useState({})
 
+  UseProtectedPage()
+  
   useEffect(() => {
     const token = localStorage.getItem('token')
     axios.get(`${BASE_URL}trip/${pathParams.id}`, {

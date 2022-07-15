@@ -1,34 +1,23 @@
-import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
-import {goBack, goToAdmin} from '../../routes/coordinator.js'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { goBack, goToAdmin } from '../../routes/coordinator.js'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/urls'
+import useForm from '../../hooks/useForm.js'
 
 
 function LoginPage() {
   const navigate = useNavigate()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState ("")
+  const {form, onChange, cleanFields} = useForm({email: "", password: ""})
+ 
+  const onSubmitLogin = (event) => {
+    event.preventDefault()
 
-
-  const onChangeEmail = (event) => {
-    setEmail(event.target.value)
-  }
-
-  const onChangePassword = (event) => {
-    setPassword(event.target.value)
-  }
-
-  const onSubmitLogin = () => {
-    console.log(email, password)
-    const body = {
-      email: email,
-      password: password
-    }
-    axios.post(`${BASE_URL}login`, body)
+    axios.post(`${BASE_URL}login`, form)
       .then((response) => {
-        console.log(response.data.token)
         localStorage.setItem('token', response.data.token)
+        goToAdmin(navigate)
+        cleanFields()
       })
       .catch((error) => {
         console.log(error.response)
@@ -38,22 +27,29 @@ function LoginPage() {
   return (
     <div>
       LoginPage
-      <input
-      placeholder='email'
-      type='email'
-      value={email}
-      onChange={onChangeEmail}
-      />
-      <input
-      placeholder='password'
-      type='password'
-      value={password}
-      onChange={onChangePassword}
-      />
-      <button onClick={onSubmitLogin}>Enviar</button>
+      <form onSubmit={onSubmitLogin}>
+        <input
+          name='email'
+          placeholder='email'
+          type='email'
+          value={form.email}
+          onChange={onChange}
+          required
+        />
+        <input
+          name='password'
+          placeholder='password'
+          type='password'
+          value={form.password}
+          onChange={onChange}
+          required
+          pattern={"^.{3,}"}
+          title={"Sua senha deve ter no mínimo 3 caracteres"}
+        />
+        <button>Fazer Login</button>
+      </form>
       <hr />
       <button onClick={() => goBack(navigate)}>Voltar</button>
-      <button onClick={() => goToAdmin(navigate)}>Entrar</button>
     </div>
   )
 }

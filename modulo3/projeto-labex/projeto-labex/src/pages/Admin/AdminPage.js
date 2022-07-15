@@ -7,7 +7,7 @@ import UseRequestData from '../../hooks/UseRequestData'
 function AdminPage() {
   const navigate = useNavigate()
   const [listTrip, isLoading, error] = UseRequestData(`${BASE_URL}trips`)
-  
+
   const showTrips = () => {
     if (isLoading) {
       return (
@@ -34,6 +34,7 @@ function AdminPage() {
         })
       )
     }
+
   }
 
   return (
