@@ -16,8 +16,7 @@ function TripDetailsPage() {
       headers: {
         auth: token
       }
-    }
-   )
+    })
     .then((res) => {
       console.log(res)
       setTrip(res.data.trip)
@@ -36,6 +35,8 @@ function TripDetailsPage() {
       {trip.date}
 
       <p>Candidatos Pendentes</p>
+
+      <p>Candidatos Aprovados</p>
       
         
       </div>

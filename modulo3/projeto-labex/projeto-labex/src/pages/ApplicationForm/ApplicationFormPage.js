@@ -2,6 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goBack } from '../../routes/coordinator.js'
 import useForm from '../../hooks/useForm.js'
+import { Countries } from '../../components/Counstries.js'
+import {ContainerApplication, Form} from './ApplicationFormStyled'
+import axios from 'axios'
+import { BASE_URL } from '../../constants/urls.js'
+import UseRequestData from '../../hooks/UseRequestData'
+
 
 
 function ApplicationFormPage() {
@@ -11,27 +17,60 @@ function ApplicationFormPage() {
      age: "", 
      email: "", 
      applicationText: "", 
-     profession: ""
+     profession: "",
+     country: "",
+     tripId: ""
      })
-  const onSubmitApplication = (event) => {
+    
+  const [listTrip] = UseRequestData(`${BASE_URL}trips`)
+  const trip = listTrip?.trips
+
+  const onSubmitApplication = (event, id) => {
     event.preventDefault()
-    console.log("formulario enviado", form)
-    cleanFields()
+    axios.post(`${BASE_URL}trips/${form.tripId}/apply`, form)
+    .then((res) => {
+      console.log("formulario enviado", res, form)
+      cleanFields()
+    })
+    .catch((err) => {
+      console.log(err.response)
+    })
   }
 
   return (
-    <div>
-      Inscrever-se para uma viagem
-      <form onSubmit={onSubmitApplication}>
+    <ContainerApplication>
+      <p>Bora então?</p>
+      <p>Preencha os dados abaixo que nosso time entrará em contato em breve.</p>
+      <Form onSubmit={onSubmitApplication}>
+        <select name={'tripId'} value={form.tripId} onChange={onChange} placeholder='Escolha uma viagem' required>
+          <option value="" disabled>Selecione um de nossos destinos</option>
+          {listTrip && trip.map((tripSelect) => {
+            return(
+              <option key={tripSelect.id} value={tripSelect.id}>{tripSelect.name}</option>
+            )
+          })}
+        </select>
         <input name={'name'} value={form.name} onChange={onChange} placeholder='Nome' required pattern={'^.{3,}'} title={'O nome deve ter mínimo 3 letras'}/>
         <input name={'age'} value={form.age} onChange={onChange} placeholder='Idade' required type={'number'} min={18} />
         <input name={'email'} value={form.email} onChange={onChange} placeholder='E-mail' required type={'email'}/>
         <input name={'applicationText'} value={form.applicationText} onChange={onChange} placeholder='Texto de candidatura' required />
         <input name={'profession'} value={form.profession} onChange={onChange} placeholder='Profissão' required />
+        <select 
+        name={'country'}
+        value={form.country}
+        onChange={onChange} required>
+          <option value={''}>País de origem:</option> 
+          {Countries.map((country) => {
+            return (
+              <option value={country} key={country}>{country}</option>
+            )
+          })}      
+
+        </select>
         <button>Inscrever-se</button>
-      </form>
+      </Form>
       <button onClick={() => goBack(navigate)}>Voltar</button>
-    </div>
+    </ContainerApplication>
   )
 }
 

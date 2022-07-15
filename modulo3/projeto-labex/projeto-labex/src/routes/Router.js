@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import AdminPage from "../pages/Admin/AdminPage";
 import ApplicationFormPage from "../pages/ApplicationForm/ApplicationFormPage";
 import CreateTripPage from "../pages/CreateTrip/CreateTripPage";
@@ -23,6 +24,7 @@ const Router = () => {
       <Route path="admin/trips/create" element={<CreateTripPage />} />
       {/* <Route path="*" element={"Página não encontrada"} /> */}
     </Routes>
+    <Footer />
   </BrowserRouter>
   )
 }
