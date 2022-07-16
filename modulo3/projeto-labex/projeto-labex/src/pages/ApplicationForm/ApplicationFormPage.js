@@ -15,7 +15,6 @@ function ApplicationFormPage() {
   const { form, onChange, cleanFields } = useForm({
      name: "", 
      age: "", 
-     email: "", 
      applicationText: "", 
      profession: "",
      country: "",
@@ -23,7 +22,6 @@ function ApplicationFormPage() {
      })
     
   const [listTrip, isLoading, error] = UseRequestData(`${BASE_URL}trips`)
-
   const optionSelect = () => {
     if (isLoading) {
       return(
@@ -40,10 +38,8 @@ function ApplicationFormPage() {
             <option key={trip.id} value={trip.id}>{trip.name}</option>
           )
         })
-      )
-    }
+      )}
   }
-
   const onSubmitApplication = (event) => {
     event.preventDefault()
     axios.post(`${BASE_URL}trips/${form.tripId}/apply`, form)
@@ -62,12 +58,11 @@ function ApplicationFormPage() {
       <p>Preencha os dados abaixo que nosso time entrará em contato em breve.</p>
       <Form onSubmit={onSubmitApplication}>
         <select name={'tripId'} value={form.tripId} onChange={onChange} required>
-          <option value="" disabled>Selecione um de nossos destinos</option>
+          <option value="">Selecione um de nossos destinos</option>
           {optionSelect()}
         </select>
         <input name={'name'} value={form.name} onChange={onChange} placeholder='Nome' required pattern={'^.{3,}'} title={'O nome deve ter mínimo 3 letras'}/>
         <input name={'age'} value={form.age} onChange={onChange} placeholder='Idade' required type={'number'} min={18} />
-        <input name={'email'} value={form.email} onChange={onChange} placeholder='E-mail' required type={'email'}/>
         <input name={'applicationText'} value={form.applicationText} onChange={onChange} placeholder='Texto de candidatura' required />
         <input name={'profession'} value={form.profession} onChange={onChange} placeholder='Profissão' required />
         <select 

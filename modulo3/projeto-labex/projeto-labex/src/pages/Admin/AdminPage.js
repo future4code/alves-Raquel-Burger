@@ -1,6 +1,6 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom'
-import {goBack, goToCreateTrip, goToLogin, goToDetails} from '../../routes/coordinator.js'
+import { useNavigate } from 'react-router-dom'
+import { goBack, goToCreateTrip, goToLogin, goToDetails } from '../../routes/coordinator.js'
 import { BASE_URL } from '../../constants/urls'
 import UseRequestData from '../../hooks/UseRequestData'
 import UseProtectedPage from '../../hooks/UseProtectedPage'
@@ -11,7 +11,7 @@ function AdminPage() {
   UseProtectedPage()
   const navigate = useNavigate()
   const [listTrip, isLoading, error] = UseRequestData(`${BASE_URL}trips`)
-  
+
   const onClickDeleteTrip = (id) => {
     const token = localStorage.getItem('token')
     axios.delete(`${BASE_URL}trips/${id}`, {
@@ -19,14 +19,14 @@ function AdminPage() {
         auth: token
       }
     })
-    .then((res) => {
-      console.log("deletou", res)
-      showTrips()
-      document.location.reload(true)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((res) => {
+        console.log("deletou", res)
+        showTrips()
+        document.location.reload(true)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 
   }
 
@@ -35,11 +35,11 @@ function AdminPage() {
       return (
         <p>Carregando...</p>
       )
-    }else if (!isLoading && error) {
+    } else if (!isLoading && error) {
       return (
         <p>{error}</p>
       )
-    }else if (listTrip.trips && listTrip.trips.length > 0) {
+    } else if (listTrip.trips && listTrip.trips.length > 0) {
       return (
         listTrip.trips.map((trip) => {
           return (
@@ -67,7 +67,7 @@ function AdminPage() {
       <button onClick={() => goToCreateTrip(navigate)}>Criar Viagem</button>
       <button onClick={() => goToLogin(navigate)}>Logout</button>
 
-      </div>
+    </div>
   )
 }
 
