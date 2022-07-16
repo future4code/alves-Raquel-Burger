@@ -22,10 +22,29 @@ function ApplicationFormPage() {
      tripId: ""
      })
     
-  const [listTrip] = UseRequestData(`${BASE_URL}trips`)
-  const trip = listTrip?.trips
+  const [listTrip, isLoading, error] = UseRequestData(`${BASE_URL}trips`)
 
-  const onSubmitApplication = (event, id) => {
+  const optionSelect = () => {
+    if (isLoading) {
+      return(
+        <option>Carregando...</option>
+      )
+    } else if (!isLoading && error) {
+      return(
+        <option>Erro ao carregar opções</option>
+      )
+    } else if (listTrip.trips && listTrip.trips.length > 0) {
+      return (
+        listTrip.trips.map((trip) => {
+          return (
+            <option key={trip.id} value={trip.id}>{trip.name}</option>
+          )
+        })
+      )
+    }
+  }
+
+  const onSubmitApplication = (event) => {
     event.preventDefault()
     axios.post(`${BASE_URL}trips/${form.tripId}/apply`, form)
     .then((res) => {
@@ -42,13 +61,9 @@ function ApplicationFormPage() {
       <p>Bora então?</p>
       <p>Preencha os dados abaixo que nosso time entrará em contato em breve.</p>
       <Form onSubmit={onSubmitApplication}>
-        <select name={'tripId'} value={form.tripId} onChange={onChange} placeholder='Escolha uma viagem' required>
+        <select name={'tripId'} value={form.tripId} onChange={onChange} required>
           <option value="" disabled>Selecione um de nossos destinos</option>
-          {listTrip && trip.map((tripSelect) => {
-            return(
-              <option key={tripSelect.id} value={tripSelect.id}>{tripSelect.name}</option>
-            )
-          })}
+          {optionSelect()}
         </select>
         <input name={'name'} value={form.name} onChange={onChange} placeholder='Nome' required pattern={'^.{3,}'} title={'O nome deve ter mínimo 3 letras'}/>
         <input name={'age'} value={form.age} onChange={onChange} placeholder='Idade' required type={'number'} min={18} />
