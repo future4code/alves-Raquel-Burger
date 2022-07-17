@@ -5,6 +5,7 @@ import { BASE_URL } from '../../constants/urls'
 import UseRequestData from '../../hooks/UseRequestData'
 import UseProtectedPage from '../../hooks/UseProtectedPage'
 import axios from 'axios'
+import { ButtonTrip, ContainerAdminTrip, ContainerAdminTrips, ContainerTopAdmin } from './AdminStyled.js'
 
 
 function AdminPage() {
@@ -43,15 +44,16 @@ function AdminPage() {
       return (
         listTrip.trips.map((trip) => {
           return (
-            <div key={trip.id}>
+            <ContainerAdminTrip key={trip.id}>
               <p>{trip.name}</p>
               <p>{trip.description}</p>
-              <p>{trip.planet}</p>
-              <p>{trip.duration}</p>
-              <p>{trip.date}</p>
-              <button onClick={() => goToDetails(navigate, trip.id)}>Ver detalhes</button>
-              <button onClick={() => onClickDeleteTrip(trip.id)}>Deletar</button>
-            </div>
+              <p>Planeta: {trip.planet} | Duração: {trip.durationInDays} dias </p>
+              <p>Saída: {trip.date}</p>
+              <div>
+                <ButtonTrip onClick={() => goToDetails(navigate, trip.id)}>Detalhes</ButtonTrip>
+                <ButtonTrip onClick={() => onClickDeleteTrip(trip.id)}>Deletar</ButtonTrip>
+              </div>
+            </ContainerAdminTrip>
           )
         })
       )
@@ -61,12 +63,15 @@ function AdminPage() {
 
   return (
     <div>
-      Painel Administrativo
-      {showTrips()}
-      <button onClick={() => goBack(navigate)}>Voltar</button>
-      <button onClick={() => goToCreateTrip(navigate)}>Criar Viagem</button>
-      <button onClick={() => goToLogin(navigate)}>Logout</button>
+      <ContainerTopAdmin>
+        <ButtonTrip onClick={() => goBack(navigate)}>Voltar</ButtonTrip>
+        <ButtonTrip onClick={() => goToCreateTrip(navigate)}>Criar Viagem</ButtonTrip>
+        <ButtonTrip onClick={() => goToLogin(navigate)}>Logout</ButtonTrip>
+      </ContainerTopAdmin>
+      <ContainerAdminTrips>
+        {showTrips()}
 
+      </ContainerAdminTrips>
     </div>
   )
 }

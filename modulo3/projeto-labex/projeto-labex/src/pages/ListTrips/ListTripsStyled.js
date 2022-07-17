@@ -4,7 +4,7 @@ export const ContainerTrips = styled.section`
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    height: calc(100vh - 20rem);
+    height: calc(100vh - 18rem);
     align-items: center;
     overflow-y: scroll;
     &::-webkit-scrollbar {

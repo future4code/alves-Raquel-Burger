@@ -3,8 +3,12 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../../constants/urls'
 import UseProtectedPage from '../../hooks/UseProtectedPage'
+import {goBack} from '../../routes/coordinator.js'
+import {useNavigate} from 'react-router-dom'
+import { ButtonAdminDetail, ContainerAdminDetails, ContainerAdminTripDetail } from './TripDetailsStyled'
 
 function TripDetailsPage() {
+  const navigate = useNavigate()
   const pathParams = useParams()
   const [trip, setTrip] = useState({})
   const [candidates, setCandidates] = useState([])
@@ -38,35 +42,39 @@ function TripDetailsPage() {
         <p>Texto: {candidate.applicationText}</p>
         <p>País: {candidate.country}</p>
         <p>Profissão: {candidate.profession}</p>
-        <button onClick={() => decideCandidate(candidate.id, true) }>Aprovar</button>
-        <button>Reprovar</button>
+        <ButtonAdminDetail onClick={() => decideCandidate(candidate.id, true)}>Aprovar</ButtonAdminDetail>
+        <ButtonAdminDetail>Reprovar</ButtonAdminDetail>
       </div>
     )
   })
 
   const approvedList = approved?.map((approved) => {
     return (
-      <ul key={approved.id}>{approved.name}</ul>)
+      <div key={approved.id}>
+        <p>{approved.name}</p>
+        </div>)
   })
 
   const showTrip = () => {
     if (trip) {
       return (
-        <div>
-          Detalhes da viagem
-          {trip.name}
-          {trip.description}
-          {trip.planet}
-          {trip.duration}
-          {trip.date}
+        <ContainerAdminDetails>
+          <ContainerAdminTripDetail>
+          <h4>{trip.name}</h4>
+          <p>{trip.description}</p>
+          <p>Planeta: {trip.planet} | Duração: {trip.duration} dias </p>
+          <p>Saída: {trip.date}</p>
 
-          <p>Candidatos Pendentes</p>
+          <h4>Candidatos Pendentes</h4>
           {candidatesList}
 
-          <p>Candidatos Aprovados</p>
+          <h4>Candidatos Aprovados</h4>
           {approvedList}
+          <ButtonAdminDetail onClick={() => goBack(navigate)}>Voltar</ButtonAdminDetail>
+          </ContainerAdminTripDetail>
+      
 
-        </div>
+        </ContainerAdminDetails>
       )
     } else {
       return (
@@ -85,17 +93,17 @@ function TripDetailsPage() {
         auth: token
       }
     })
-    .then((res) => {
-      if(choice === true) {
-        console.log("aprovado")
-      } else {
-        console.log("reprovado")
-      }
-      document.location.reload(true)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((res) => {
+        if (choice === true) {
+          console.log("aprovado")
+        } else {
+          console.log("reprovado")
+        }
+        document.location.reload(true)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
 

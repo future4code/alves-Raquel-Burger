@@ -4,12 +4,13 @@ import { goBack, goToAdmin } from '../../routes/coordinator.js'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/urls'
 import useForm from '../../hooks/useForm.js'
+import { ButtonLogin, ContainerLogin, FormLogin } from './LoginStyled.js'
 
 
 function LoginPage() {
   const navigate = useNavigate()
-  const {form, onChange, cleanFields} = useForm({email: "", password: ""})
- 
+  const { form, onChange, cleanFields } = useForm({ email: "", password: "" })
+
   const onSubmitLogin = (event) => {
     event.preventDefault()
 
@@ -25,9 +26,10 @@ function LoginPage() {
   }
 
   return (
-    <div>
-      LoginPage
-      <form onSubmit={onSubmitLogin}>
+    <ContainerLogin>
+      <h4>Área Admin</h4>
+      <FormLogin onSubmit={onSubmitLogin}>
+        <h4>Login</h4>
         <input
           name='email'
           placeholder='email'
@@ -46,11 +48,10 @@ function LoginPage() {
           pattern={"^.{3,}"}
           title={"Sua senha deve ter no mínimo 3 caracteres"}
         />
-        <button>Fazer Login</button>
-      </form>
-      <hr />
-      <button onClick={() => goBack(navigate)}>Voltar</button>
-    </div>
+        <ButtonLogin>Entrar</ButtonLogin>
+      </FormLogin>
+      <ButtonLogin onClick={() => goBack(navigate)}>Voltar</ButtonLogin>
+    </ContainerLogin>
   )
 }
 

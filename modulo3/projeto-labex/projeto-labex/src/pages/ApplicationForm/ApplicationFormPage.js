@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { goBack } from '../../routes/coordinator.js'
 import useForm from '../../hooks/useForm.js'
 import { Countries } from '../../components/Counstries.js'
-import {ContainerApplication, Form} from './ApplicationFormStyled'
+import { ButtonTrip, ContainerApplication, Form } from './ApplicationFormStyled'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/urls.js'
 import UseRequestData from '../../hooks/UseRequestData'
@@ -13,22 +13,22 @@ import UseRequestData from '../../hooks/UseRequestData'
 function ApplicationFormPage() {
   const navigate = useNavigate()
   const { form, onChange, cleanFields } = useForm({
-     name: "", 
-     age: "", 
-     applicationText: "", 
-     profession: "",
-     country: "",
-     tripId: ""
-     })
-    
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+    country: "",
+    tripId: ""
+  })
+
   const [listTrip, isLoading, error] = UseRequestData(`${BASE_URL}trips`)
   const optionSelect = () => {
     if (isLoading) {
-      return(
+      return (
         <option>Carregando...</option>
       )
     } else if (!isLoading && error) {
-      return(
+      return (
         <option>Erro ao carregar opções</option>
       )
     } else if (listTrip.trips && listTrip.trips.length > 0) {
@@ -38,18 +38,19 @@ function ApplicationFormPage() {
             <option key={trip.id} value={trip.id}>{trip.name}</option>
           )
         })
-      )}
+      )
+    }
   }
   const onSubmitApplication = (event) => {
     event.preventDefault()
     axios.post(`${BASE_URL}trips/${form.tripId}/apply`, form)
-    .then((res) => {
-      console.log("formulario enviado", res, form)
-      cleanFields()
-    })
-    .catch((err) => {
-      console.log(err.response)
-    })
+      .then((res) => {
+        console.log("formulario enviado", res, form)
+        cleanFields()
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
   }
 
   return (
@@ -61,25 +62,25 @@ function ApplicationFormPage() {
           <option value="">Selecione um de nossos destinos</option>
           {optionSelect()}
         </select>
-        <input name={'name'} value={form.name} onChange={onChange} placeholder='Nome' required pattern={'^.{3,}'} title={'O nome deve ter mínimo 3 letras'}/>
+        <input name={'name'} value={form.name} onChange={onChange} placeholder='Nome' required pattern={'^.{3,}'} title={'O nome deve ter mínimo 3 letras'} />
         <input name={'age'} value={form.age} onChange={onChange} placeholder='Idade' required type={'number'} min={18} />
-        <input name={'applicationText'} value={form.applicationText} onChange={onChange} placeholder='Texto de candidatura' required />
         <input name={'profession'} value={form.profession} onChange={onChange} placeholder='Profissão' required />
-        <select 
-        name={'country'}
-        value={form.country}
-        onChange={onChange} required>
-          <option value={''}>País de origem:</option> 
+        <select
+          name={'country'}
+          value={form.country}
+          onChange={onChange} required>
+          <option value={''}>País de origem:</option>
           {Countries.map((country) => {
             return (
               <option value={country} key={country}>{country}</option>
             )
-          })}      
+          })}
 
         </select>
-        <button>Inscrever-se</button>
+        <textarea rows='5' cols='33' name={'applicationText'} value={form.applicationText} onChange={onChange} placeholder='Texto de candidatura' required />
+        <ButtonTrip>Inscrever-se</ButtonTrip>
       </Form>
-      <button onClick={() => goBack(navigate)}>Voltar</button>
+      <ButtonTrip onClick={() => goBack(navigate)}>Voltar</ButtonTrip>
     </ContainerApplication>
   )
 }
