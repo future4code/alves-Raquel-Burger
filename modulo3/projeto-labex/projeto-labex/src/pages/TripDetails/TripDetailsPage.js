@@ -5,6 +5,7 @@ import { BASE_URL } from '../../constants/urls'
 import UseProtectedPage from '../../hooks/UseProtectedPage'
 import {goBack} from '../../routes/coordinator.js'
 import {useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify';
 import { ButtonAdminDetail, ContainerAdminDetails, ContainerAdminTripDetail } from './TripDetailsStyled'
 
 function TripDetailsPage() {
@@ -28,9 +29,11 @@ function TripDetailsPage() {
         setTrip(res.data.trip)
         setCandidates(res.data.trip.candidates)
         setApproved(res.data.trip.approved)
+        
       })
       .catch((err) => {
         console.log(err.response)
+        
       })
   }, [pathParams])
 
@@ -60,6 +63,7 @@ function TripDetailsPage() {
       return (
         <ContainerAdminDetails>
           <ContainerAdminTripDetail>
+          <h3>Detalhes da viagem</h3>
           <h4>{trip.name}</h4>
           <p>{trip.description}</p>
           <p>Planeta: {trip.planet} | Duração: {trip.duration} dias </p>
@@ -96,17 +100,16 @@ function TripDetailsPage() {
       .then((res) => {
         if (choice === true) {
           console.log("aprovado")
+          toast.success("Candidato aprovado com sucesso")
         } else {
-          console.log("reprovado")
+          toast.info("Candidato reprovado com sucesso")
         }
         document.location.reload(true)
       })
       .catch((err) => {
-        console.log(err)
+        toast.error(`Erro ${err.response} ao tentar efetuar decisão`)
       })
   }
-
-
 
 
   return (

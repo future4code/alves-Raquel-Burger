@@ -7,7 +7,9 @@ import { ButtonTrip, ContainerApplication, Form } from './ApplicationFormStyled'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/urls.js'
 import UseRequestData from '../../hooks/UseRequestData'
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SpaceShip from '../../assets/space-ship.png'
 
 
 function ApplicationFormPage() {
@@ -45,7 +47,10 @@ function ApplicationFormPage() {
     event.preventDefault()
     axios.post(`${BASE_URL}trips/${form.tripId}/apply`, form)
       .then((res) => {
-        console.log("formulario enviado", res, form)
+        toast.success(`Sua solicitação foi cadastrada com sucesso.`, {
+          icon: <img src={SpaceShip} height='25px' width='25px' />
+        }
+         )
         cleanFields()
       })
       .catch((err) => {

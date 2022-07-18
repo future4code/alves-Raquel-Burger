@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm.js'
 import axios from 'axios'
 import { BASE_URL } from '../../constants/urls.js'
 import { ButtonCreateTrip, ContainerCreate, Form } from './CreateTripStyled.js'
+import { toast } from 'react-toastify';
 
 
 function CreateTripPage() {
@@ -28,9 +29,10 @@ function CreateTripPage() {
     .then((res) => {
       console.log("viagem criada", form, res)
       cleanFields()
+      toast.success("Viagem criada com sucesso!")
     })
     .catch((err) => {
-      console.log(err.response)
+      toast.error(`Erro ${err.response} ao criar a viagem`)
     })
   }
   return (

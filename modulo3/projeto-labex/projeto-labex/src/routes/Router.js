@@ -22,7 +22,7 @@ const Router = () => {
       <Route path="admin/trips/list" element={<AdminPage />} />
       <Route path="admin/trips/:id" element={<TripDetailsPage />} />
       <Route path="admin/trips/create" element={<CreateTripPage />} />
-      {/* <Route path="*" element={"Página não encontrada"} /> */}
+      <Route path="*" element={"Página não encontrada"} />
     </Routes>
     <Footer />
   </BrowserRouter>

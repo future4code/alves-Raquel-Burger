@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { goBack, goToApplicationForm } from '../../routes/coordinator.js'
 import { BASE_URL } from '../../constants/urls'
 import UseRequestData from '../../hooks/UseRequestData'
-import { ButtonTrip, ContainerTopTrips, ContainerTrip, ContainerTrips, GifC3po } from './ListTripsStyled.js'
+import { ButtonTrip, ContainerTopTrips, ContainerTrip, ContainerTrips, Gif } from './ListTripsStyled.js'
 import C3PO from '../../assets/c3po.gif'
 
 function ListTripsPage() {
@@ -13,7 +13,7 @@ function ListTripsPage() {
   const showTrips = () => {
     if (isLoading) {
       return (
-        <GifC3po src={C3PO} alt ='gif c3po loading'/>
+        <Gif src={C3PO} alt ='gif c3po loading'/>
       )
     } else if (!isLoading && error) {
       return (

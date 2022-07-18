@@ -56,6 +56,8 @@ export const ContainerTrip = styled.section`
     padding: 0.2rem;
 `
 
-export const GifC3po = styled.img`
+export const Gif = styled.img`
     border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
 `

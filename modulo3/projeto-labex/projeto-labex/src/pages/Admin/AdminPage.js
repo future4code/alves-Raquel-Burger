@@ -5,7 +5,10 @@ import { BASE_URL } from '../../constants/urls'
 import UseRequestData from '../../hooks/UseRequestData'
 import UseProtectedPage from '../../hooks/UseProtectedPage'
 import axios from 'axios'
+import Falcon from '../../assets/falcon.gif'
 import { ButtonTrip, ContainerAdminTrip, ContainerAdminTrips, ContainerTopAdmin } from './AdminStyled.js'
+import { Gif } from '../ListTrips/ListTripsStyled.js'
+import { toast } from 'react-toastify';
 
 
 function AdminPage() {
@@ -23,10 +26,11 @@ function AdminPage() {
       .then((res) => {
         console.log("deletou", res)
         showTrips()
+        toast.info('Viagem deletada com sucesso!')
         document.location.reload(true)
       })
       .catch((err) => {
-        console.log(err)
+        toast.error(`Erro ao deletar viagem ${err.response}`)
       })
 
   }
@@ -34,7 +38,7 @@ function AdminPage() {
   const showTrips = () => {
     if (isLoading) {
       return (
-        <p>Carregando...</p>
+        <Gif src={Falcon} alt ='gif Millenium Falcon loading'/>
       )
     } else if (!isLoading && error) {
       return (
