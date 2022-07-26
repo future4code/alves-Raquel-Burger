@@ -28,5 +28,5 @@ export const ButtonClose = styled.button`
     color: #A3A3A3;
     background-color: transparent;
     border: none;
-    /* margin-left: auto; */
 `
+
