@@ -4,9 +4,8 @@ export const ContainerLogin = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 100%;
-    border: 1px blue solid;
+    justify-content: space-evenly;
+    height: 100vh;
      
 `
 export const ContainerLogo = styled.section`
@@ -14,7 +13,6 @@ export const ContainerLogo = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border: 1px red solid;
     `
 
 export const LogoLogin = styled.img `
@@ -27,6 +25,8 @@ export const LogoBigText = styled.h1`
     font-weight: 700;
     font-size: 36px;
     color: #373737;
+    margin: 0;
+    
 `
 
 export const LogoTextSmall = styled.h2`
@@ -39,7 +39,6 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 22.688rem;
-    border: 1px orange solid;
     input{
         height: 3.75rem;
         border-radius: 4px;
@@ -48,17 +47,10 @@ export const Form = styled.form`
         font-size: 16px;
         color: #323941;
         opacity: 0.8;
-
+        margin-top: 0.5rem;
     }
 `
 
-export const ContainerButtons = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid green;
-`
 
 export const ButtonContinue = styled.button`
     display: flex;
@@ -74,6 +66,8 @@ export const ButtonContinue = styled.button`
     font-weight: 700;
     font-size: 18px;
     color: #FFFFFF;
+    margin-top: 3.5rem;
+    cursor: pointer;
 `
 export const ButtonCreate = styled.button`
     display: flex;
@@ -89,7 +83,10 @@ export const ButtonCreate = styled.button`
     font-family: 'Noto Sans';
     font-weight: 700;
     font-size: 18px;
+    cursor: pointer;
 `
  export const LineImg = styled.img`
     width: 22.813rem;
+    margin-top: 1.125rem;
+    margin-bottom: 1.125rem;
     `
