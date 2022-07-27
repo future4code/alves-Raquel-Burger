@@ -14,7 +14,7 @@ const Router = () => {
             <Route  index exact path="/" element={<FeedPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="singup" element={<SingUpPage />} />
-            <Route path="comment" element={<CommentPage />} />
+            <Route path="comment/:id" element={<CommentPage />} />
             <Route path="*" element={"Pagina não encontrada"} />
         </Routes>
     </BrowserRouter>

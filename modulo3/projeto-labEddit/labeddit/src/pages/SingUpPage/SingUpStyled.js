@@ -20,6 +20,8 @@ export const FormSingUp = styled.form`
     display: flex;
     flex-direction: column;
     width: 22.688rem;
+    padding: 0.5rem;
+
     input{
         height: 3.75rem;
         border-radius: 4px;

@@ -31,7 +31,7 @@ const Header = () => {
                     <ButtonLogin onClick={logout}>Logout</ButtonLogin>
                 </ContainerHeader>
             )
-        } else if (window.location.pathname === "/comment") {
+        } else if (window.location.pathname.includes("/comment")) {
             return (
                 <ContainerHeader>
                     <ButtonClose onClick={() => goBack(navigate)}> X </ButtonClose>

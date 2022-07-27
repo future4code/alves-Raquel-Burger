@@ -22,7 +22,6 @@ const LoginPage = () => {
   const login = () => {
     axios.post(`${BASE_URL}/users/login`, form)
     .then((res) => {
-      console.log(res)
       localStorage.setItem("token", res.data.token)
       cleanFields()
       goToFeed(navigate)

@@ -15,7 +15,7 @@ export const ContainerLogo = styled.section`
     justify-content: flex-start;
     `
 
-export const LogoLogin = styled.img `
+export const LogoLogin = styled.img`
     height: 5.25rem;
     width: 5.25rem;
 `
@@ -48,6 +48,8 @@ export const Form = styled.form`
         color: #323941;
         opacity: 0.8;
         margin-top: 0.5rem;
+        padding: 0.5rem;
+
     }
 `
 
@@ -85,8 +87,8 @@ export const ButtonCreate = styled.button`
     font-size: 18px;
     cursor: pointer;
 `
- export const LineImg = styled.img`
+export const LineImg = styled.img`
     width: 22.813rem;
     margin-top: 1.125rem;
     margin-bottom: 1.125rem;
-    `
+`

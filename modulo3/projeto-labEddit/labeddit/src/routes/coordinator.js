@@ -10,8 +10,8 @@ export const goToSingUp = (navigate) => {
     navigate("/singup")
 }
 
-export const goToComment = (navigate) => {
-    navigate("/comment")
+export const goToComment = (navigate, id ) => {
+    navigate(`/comment/${id}`)
 }
 
 export const goBack = (navigate) => {
