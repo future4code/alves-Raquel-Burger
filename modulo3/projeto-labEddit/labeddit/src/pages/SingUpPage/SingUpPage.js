@@ -1,15 +1,18 @@
-import React from 'react'
-import { BigText, ButtonRegister, ContainerCheckBox, ContainerSingUp, FormSingUp, LegalText } from './SingUpStyled'
+import React, {useState} from 'react'
+import { BigText, ButtonRegister, ContainerCheckBox, ContainerSingUp, FormSingUp, LegalText, LoadingGif } from './SingUpStyled'
 import useForm from '../../hooks/useForm'
 import { BASE_URL } from '../../constants/urls'
 import useUnprotectedPage from '../../hooks/useUnprotectedPage'
 import axios from 'axios'
 import { goToFeed } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../assets/loading.gif'
+
 
 
 
 const SingUpPage = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   const {form, onChange, cleanFields} = useForm({ username: "", email: "", password: "" })
   useUnprotectedPage()
@@ -21,15 +24,16 @@ const SingUpPage = () => {
   }
 
   const register = (form, cleanFields, navigate) => {
+    setIsLoading(true)
     axios.post(`${BASE_URL}/users/signup`, form)
       .then((res) => {
-        console.log(form)
         localStorage.setItem('token', res.data.token)
         goToFeed(navigate)
+        setIsLoading(false)
         cleanFields()
       })
       .catch((err) => {
-        console.log(err.response)
+        setIsLoading(false)
         alert(err.response.data)
       })
   }
@@ -51,7 +55,7 @@ const SingUpPage = () => {
           <LegalText>Eu concordo em receber emails sobre coisas legais no Labeddit</LegalText>
         </ContainerCheckBox>
         <ButtonRegister type='submit'>
-          Cadastrar
+        {isLoading ? <LoadingGif src={Loading}/> : <>Cadastrar</>}
         </ButtonRegister>
       </FormSingUp>
     </ContainerSingUp>

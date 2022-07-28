@@ -74,3 +74,10 @@ export const ButtonRegister = styled.button`
     font-size: 18px;
     color: #FFFFFF;
 `
+
+export const LoadingGif = styled.img`
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+   
+`

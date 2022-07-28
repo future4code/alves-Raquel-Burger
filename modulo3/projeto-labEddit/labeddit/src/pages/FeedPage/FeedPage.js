@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BASE_URL } from '../../constants/urls'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import useRequestdata from '../../hooks/useRequestdata'
-import { LineImg, BodyPost, ContainerCard, Votes, ContainerVoteComment, TitlePost, UserPost, Comments, Form, ContainerFeed, ButtonPost } from './FeedStyled'
+import { LoadingGif, LineImg, BodyPost, ContainerCard, Votes, ContainerVoteComment, TitlePost, UserPost, Comments, Form, ContainerFeed, ButtonPost } from './FeedStyled'
 import Up from '../../assets/up.svg'
 import Down from '../../assets/down.svg'
 import Comment from '../../assets/comment.svg'
@@ -10,20 +10,45 @@ import { goToComment } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
 import Line from '../../assets/line.svg'
 import useForm from '../../hooks/useForm'
-
-
+import axios from 'axios'
+import Loading from '../../assets/loading.gif'
 
 
 const FeedPage = () => {
-  const {form, onChange, cleanFields} = useForm({title: "", body: ""})
+  const [isLoading, setIsLoading] = useState(false)
+  const { form, onChange, cleanFields } = useForm({ title: "", body: "" })
   const navigate = useNavigate()
   const posts = useRequestdata([], `${BASE_URL}/posts`)
   useProtectedPage()
-  console.log(posts)
 
   const onClickComment = (id) => {
     goToComment(navigate, id)
   }
+
+  const createPost = () => {
+    setIsLoading(true)
+    axios.post(`${BASE_URL}/posts`, form, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      }
+    })
+      .then((res) => {
+        setIsLoading(false)
+        alert(res.data)
+      })
+      .catch((err) => {
+        setIsLoading(false)
+        alert(err.data)
+      })
+
+  }
+
+  const onSubmitPost = (event) => {
+    event.preventDefault()
+    createPost()
+    cleanFields()
+  }
+
 
   const postCards = posts.map((post) => {
     return (
@@ -42,10 +67,10 @@ const FeedPage = () => {
 
   return (
     <ContainerFeed>
-      <Form>
-      <input name={"title"} value={form.title} onChange={onChange} placeholder='Título' required></input>
-      <textarea name={"body"} value={form.body} onChange={onChange} placeholder='Escreva seu post...' required></textarea>
-      <ButtonPost>Postar</ButtonPost>
+      <Form onSubmit={onSubmitPost}>
+        <input name={"title"} value={form.title} onChange={onChange} placeholder='Título' required></input>
+        <textarea name={"body"} value={form.body} onChange={onChange} placeholder='Escreva seu post...' required></textarea>
+        <ButtonPost>{isLoading ? <LoadingGif src={Loading}/> : <>Postar</>}</ButtonPost>
       </Form>
       <LineImg src={Line} alt="Linha separação de botões" />
       {postCards}

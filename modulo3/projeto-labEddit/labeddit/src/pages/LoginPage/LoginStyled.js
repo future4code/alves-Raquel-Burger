@@ -92,3 +92,10 @@ export const LineImg = styled.img`
     margin-top: 1.125rem;
     margin-bottom: 1.125rem;
 `
+
+export const LoadingGif = styled.img`
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+   
+`

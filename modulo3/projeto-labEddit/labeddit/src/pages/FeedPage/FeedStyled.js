@@ -133,3 +133,10 @@ export const Comments = styled.section`
         font-size: 0.625rem;
     }
 `
+
+export const LoadingGif = styled.img`
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+   
+`
