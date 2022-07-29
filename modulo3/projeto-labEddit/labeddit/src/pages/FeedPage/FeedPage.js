@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import { BASE_URL } from '../../constants/urls'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import useRequestdata from '../../hooks/useRequestdata'
-import { LoadingGif, LineImg, BodyPost, ContainerCard, Votes, ContainerVoteComment, TitlePost, UserPost, Comments, Form, ContainerFeed, ButtonPost } from './FeedStyled'
-import Up from '../../assets/up.svg'
-import Down from '../../assets/down.svg'
-import Comment from '../../assets/comment.svg'
+import { LoadingGif, LineImg, Form, ContainerFeed, ButtonPost } from './FeedStyled'
+
 import { goToComment } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
 import Line from '../../assets/line.svg'
 import useForm from '../../hooks/useForm'
 import axios from 'axios'
 import Loading from '../../components/Loading/Loading'
+import PostsCard from '../../components/PostsCard/PostsCard'
 
 
 const FeedPage = () => {
@@ -52,16 +51,8 @@ const FeedPage = () => {
 
   const postCards = posts.map((post) => {
     return (
-      <ContainerCard key={post.id}>
-        <UserPost>Enviado por: {post.username}</UserPost>
-        <TitlePost>{post.title}</TitlePost>
-        <BodyPost>{post.body}</BodyPost>
-        <ContainerVoteComment>
-          <Votes> <img src={Up} alt="imagem seta para cima" /> <p>10</p><img src={Down} alt="imagem seta para baixo" /></Votes>
-          <Comments onClick={() => onClickComment(post.id)}> <img src={Comment} alt="imagem balão de comentário" /> <p>10</p></Comments>
-        </ContainerVoteComment>
-      </ContainerCard>
-    )
+      <PostsCard post = {post} onClickComment = {onClickComment}/>
+       )
 
   })
 
