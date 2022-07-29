@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const useRequestdata = (initialData, url) => {
+const useRequestdata = (initialData, url, refresh) => {
     const [data, setData] = useState(initialData)
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const useRequestdata = (initialData, url) => {
         .catch((err) => {
             console.log(err)
         })
-    }, [url])
+    }, [url, refresh])
   return (data)
 }
 

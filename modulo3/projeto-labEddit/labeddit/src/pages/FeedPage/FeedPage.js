@@ -3,7 +3,6 @@ import { BASE_URL } from '../../constants/urls'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import useRequestdata from '../../hooks/useRequestdata'
 import { LoadingGif, LineImg, Form, ContainerFeed, ButtonPost } from './FeedStyled'
-
 import { goToComment } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
 import Line from '../../assets/line.svg'
@@ -11,50 +10,91 @@ import useForm from '../../hooks/useForm'
 import axios from 'axios'
 import Loading from '../../components/Loading/Loading'
 import PostsCard from '../../components/PostsCard/PostsCard'
-
+import { createPost } from '../../Services/posts.js'
 
 const FeedPage = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [refresh, setRefresh] = useState(false)
+  const [like, setLike] = useState(false)
+  const [dislike, setDislike] = useState(false)
   const { form, onChange, cleanFields } = useForm({ title: "", body: "" })
+  const posts = useRequestdata([], `${BASE_URL}/posts?size=500`, refresh)
   const navigate = useNavigate()
-  const posts = useRequestdata([], `${BASE_URL}/posts`)
   useProtectedPage()
 
   const onClickComment = (id) => {
     goToComment(navigate, id)
   }
 
-  const createPost = () => {
-    setIsLoading(true)
-    axios.post(`${BASE_URL}/posts`, form, {
-      headers: {
-        Authorization: localStorage.getItem('token')
-      }
-    })
-      .then((res) => {
-        setIsLoading(false)
-        alert(res.data)
-      })
-      .catch((err) => {
-        setIsLoading(false)
-        alert(err.data)
-      })
-
-  }
-
   const onSubmitPost = (event) => {
     event.preventDefault()
-    createPost()
-    cleanFields()
+    createPost(form, cleanFields, setRefresh, refresh, setIsLoading)
+   
   }
 
+  const upLike = (id) => {
+    if (like === true) {
+      RemoveVote(setLike, like, id)
+      setLike(!like)
+    } else {
+      const body = { direction: 1 }
+      axios.post(`${BASE_URL}/posts/${id}/votes`, body, {
+        headers: {
+          Authorization: localStorage.getItem("token")
+        }
+      })
+      .then((res) => {
+        setLike(!like)
+        setRefresh(!refresh)
+      })
+      .catch((err) => {
+        alert(err.response.data)
+      })
+    }
+  }
+  
+  const downDislike = (id) => {
+    if(dislike === true) {
+      RemoveVote(setDislike, dislike, id)
+      setDislike(!dislike)
+    } else {
+      const body = { direction: -1 }
+      axios.put(`${BASE_URL}/posts/${id}/votes`, body, {
+        headers: {
+          Authorization: localStorage.getItem("token")
+        }
+      })
+      .then((res) => {
+        setDislike(!dislike)
+        setRefresh(!refresh)
+      })
+      .catch((err) => {
+        alert(err.response.data)
+      })
+    }
+  }
 
   const postCards = posts.map((post) => {
     return (
-      <PostsCard post = {post} onClickComment = {onClickComment}/>
+      <PostsCard  key={post.id} upLike={upLike} downDislike={downDislike} post = {post} onClickComment = {onClickComment}/>
        )
 
   })
+
+  const RemoveVote = (setVote, voteName, id) => {
+    axios.delete(`${BASE_URL}/posts/${id}/votes`, {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    })
+    .then((res) => {
+      setVote(!voteName)
+      setRefresh(!refresh)
+    })
+    .catch((err) => {
+      alert(err.response.data)
+    })
+  }
 
   return (
     <ContainerFeed>
