@@ -53,7 +53,6 @@ export const Form = styled.form`
     }
 `
 
-
 export const ButtonContinue = styled.button`
     display: flex;
     align-items: center;
@@ -86,11 +85,12 @@ export const ButtonCreate = styled.button`
     font-weight: 700;
     font-size: 18px;
     cursor: pointer;
+    margin-top: 0.7rem;
+
 `
 export const LineImg = styled.img`
     width: 22.813rem;
-    margin-top: 1.125rem;
-    margin-bottom: 1.125rem;
+  
 `
 
 export const LoadingGif = styled.img`

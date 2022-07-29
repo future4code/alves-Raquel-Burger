@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { BASE_URL } from '../../constants/urls'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import useRequestdata from '../../hooks/useRequestdata'
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import Line from '../../assets/line.svg'
 import useForm from '../../hooks/useForm'
 import axios from 'axios'
-import Loading from '../../assets/loading.gif'
+import Loading from '../../components/Loading/Loading'
 
 
 const FeedPage = () => {
@@ -70,10 +70,13 @@ const FeedPage = () => {
       <Form onSubmit={onSubmitPost}>
         <input name={"title"} value={form.title} onChange={onChange} placeholder='Título' required></input>
         <textarea name={"body"} value={form.body} onChange={onChange} placeholder='Escreva seu post...' required></textarea>
-        <ButtonPost>{isLoading ? <LoadingGif src={Loading}/> : <>Postar</>}</ButtonPost>
+        <ButtonPost>{isLoading ? <LoadingGif src={Loading} /> : <>Postar</>}</ButtonPost>
       </Form>
       <LineImg src={Line} alt="Linha separação de botões" />
-      {postCards}
+     
+        {postCards.length > 0 ? postCards : <Loading />}
+      
+
     </ContainerFeed>
   )
 }
