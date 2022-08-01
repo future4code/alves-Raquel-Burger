@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { BASE_URL } from '../constants/urls'
 import { goToFeed } from '../routes/coordinator'
+import { toast } from 'react-toastify'
 
 
 export const login = ( body, cleanFields, navigate, loading) => {
@@ -12,6 +13,7 @@ export const login = ( body, cleanFields, navigate, loading) => {
             cleanFields()
             loading(false)
             goToFeed(navigate)
+            toast.success("Logado com sucesso")
         })
         .catch((err) => {
             alert(err.response.data)
@@ -27,6 +29,8 @@ export const register = (body, cleanFields, navigate, loading) => {
         goToFeed(navigate)
         loading(false)
         cleanFields()
+        toast.success("Cadastro criado com sucesso")
+
       })
       .catch((err) => {
         loading(false)

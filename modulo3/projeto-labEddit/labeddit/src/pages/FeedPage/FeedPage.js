@@ -11,6 +11,8 @@ import axios from 'axios'
 import Loading from '../../components/Loading/Loading'
 import PostsCard from '../../components/PostsCard/PostsCard'
 import { createPost } from '../../Services/posts.js'
+import { toast } from 'react-toastify'
+import CircleLoading from '../../assets/loading.gif'
 
 const FeedPage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -46,9 +48,10 @@ const FeedPage = () => {
       .then((res) => {
         setLike(!like)
         setRefresh(!refresh)
+        toast.success("Curtido")
       })
       .catch((err) => {
-        alert(err.response.data)
+        toast.error(err.response.data)
       })
     }
   }
@@ -67,9 +70,10 @@ const FeedPage = () => {
       .then((res) => {
         setDislike(!dislike)
         setRefresh(!refresh)
+        toast.info("Descurtido")
       })
       .catch((err) => {
-        alert(err.response.data)
+        toast.error(err.response.data)
       })
     }
   }
@@ -101,7 +105,7 @@ const FeedPage = () => {
       <Form onSubmit={onSubmitPost}>
         <input name={"title"} value={form.title} onChange={onChange} placeholder='Título' required></input>
         <textarea name={"body"} value={form.body} onChange={onChange} placeholder='Escreva seu post...' required></textarea>
-        <ButtonPost>{isLoading ? <LoadingGif src={Loading} /> : <>Postar</>}</ButtonPost>
+        <ButtonPost>{isLoading ? <LoadingGif src={CircleLoading} /> : <>Postar</>}</ButtonPost>
       </Form>
       <LineImg src={Line} alt="Linha separação de botões" />
      

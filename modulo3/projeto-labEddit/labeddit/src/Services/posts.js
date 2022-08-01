@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { BASE_URL } from '../constants/urls'
+import { toast } from 'react-toastify'
 
 export const createPost = (body, cleanFields, setRefresh, refresh, setIsLoading ) => {
     setIsLoading(true)
@@ -12,10 +13,11 @@ export const createPost = (body, cleanFields, setRefresh, refresh, setIsLoading 
         cleanFields()
         setIsLoading(false)
         setRefresh(!refresh)
-        alert("post criado")
+        toast.success("Post criado com sucesso!")
     })
     .catch((err) => {
         setIsLoading(false)
+        toast.error(err.response.data)
     })
 }
 
@@ -30,10 +32,11 @@ export const  createComment = (body, id, cleanFields, setRefresh, refresh, setIs
         cleanFields()
         setIsLoading(false)
         setRefresh(!refresh)
-        alert("comentário criado")
+        toast.success("Comentário criado com sucesso!")
 
     })
     .catch((err) => {
         setIsLoading(false)
+        toast.error(err.response.data)
     })
 }
