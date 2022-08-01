@@ -14,7 +14,7 @@ const PostsCard = (props) => {
           <Votes> <img src={Up} alt="imagem seta para cima" onClick={() => props.upLike(props.post.id)} /> 
           <p>{props.post.voteSum} </p>
           <img src={Down} alt="imagem seta para baixo" onClick={() => props.downDislike(props.post.id)} /></Votes>
-          <Comments onClick={() => props.onClickComment(props.post.id)}> <img src={Comment} alt="imagem balão de comentário" /> <p>10</p></Comments>
+          <Comments onClick={() => props.onClickComment(props.post.id)}> <img src={Comment} alt="imagem balão de comentário" /> {props.post.commentCount}</Comments>
         </ContainerVoteComment>
       </ContainerCard>
   )
