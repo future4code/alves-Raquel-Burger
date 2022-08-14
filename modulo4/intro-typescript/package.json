@@ -1,0 +1,20 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exerc1": "tsc && node ./build/exercicio1.js",
+    "exerc2": "tsc && node ./build/exercicio2.js",
+    "exerc3": "tsc && node ./build/exercicio3.js",
+    "exerc4": "tsc && node ./build/exercicio4.js",
+    "exerc5": "tsc && node ./build/exercicio5.js",
+    "exerc6": "tsc && node ./build/exercicio6.js",
+    "exerc7": "tsc && node ./build/exercicio7.js",
+    "exerc8": "tsc && node ./build/exercicio8.js",
+    "exerc9": "tsc && node ./build/exercicio9.js"
+  },
+  "author": "Raquel Burger",
+  "license": "ISC"
+}
