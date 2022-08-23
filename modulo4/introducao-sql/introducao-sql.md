@@ -100,4 +100,42 @@ where name like "%g%" or "%G%"
 select * from Actor
 where (name like "%a%" or "%A%" or "%g%" or "%G%") and (salary between 35000000 and 90000000);
 
+## 4
+### a)
+O tipo TEXT não possui limite de caracteres máximo.
 
+## 5
+insert into Movies (id, name, synopsis, release_date, rating)
+values (
+	"004",
+    "O Auto da Compadecida",
+    "As aventuras de João Grilo e Chicó, dois nordestinos pobres que vivem de golpes para sobreviver. Eles estão sempre enganando o povo de um pequeno vilarejo, inclusive o temido cangaceiro Severino de Aracaju, que os persegue pela região",
+    "2000-09-10",
+    10
+)
+
+## 6
+### a)
+select id, name, rating from Movies
+where id = 2;
+
+### b)
+select * from Movies
+where name = "Se eu fosse você";
+
+### c)
+select id, name, synopsis from Movies
+where rating >= 7;
+
+## 7
+### a)
+select * from Movies
+where name like "%vida%";
+
+### b)
+select * from Movies
+where name like "%povo%" or synopsis like "%povo%"
+
+### c)
+select * from Movies
+where release_date < "2022-08-22";
