@@ -6,7 +6,7 @@ GET http://localhost:3003/user/1661692319504
 GET http://localhost:3003/user/all
 
 ###
-GET http://localhost:3003/user/?query=dudinho
+GET http://localhost:3003/user/?queryName=com
 ###
 
 POST http://localhost:3003/user
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
     "name": "Raquel",
-    "nickname": "rburger",
+    "nickname": "raqburger",
     "email": "raquelburger@rburger.com"
 }
 
@@ -46,4 +46,4 @@ Content-Type: application/json
 GET http://localhost:3003/task/1661698095782
 
 ###
-GET http://localhost:3003/task/?creator_user_id=1661714919353
+GET http://localhost:3003/task?creator_user_id=1661714919353
