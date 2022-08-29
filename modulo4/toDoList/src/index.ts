@@ -3,12 +3,14 @@ import getTask from "./endpoint/getTask";
 import getTaskUser from "./endpoint/getTaskUser";
 import getUser from "./endpoint/getUser";
 import getUserAll from "./endpoint/getUserAll";
+import getUserQuery from "./endpoint/getUserQuery";
 import postTask from "./endpoint/postTask";
 import postUser from "./endpoint/postUser";
 import putUser from "./endpoint/putUser";
 
 
 // GET
+app.get('/user', getUserQuery)
 app.get('/user/all', getUserAll)
 app.get('/user/:id', getUser)
 

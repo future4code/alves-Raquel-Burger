@@ -6,14 +6,16 @@ GET http://localhost:3003/user/1661692319504
 GET http://localhost:3003/user/all
 
 ###
+GET http://localhost:3003/user/?query=dudinho
+###
 
 POST http://localhost:3003/user
 Content-Type: application/json
 
 {
-    "name": "Bela",
-    "nickname": "belamaria",
-    "email": "bela@bela.com"
+    "name": "Pretinho",
+    "nickname": "PretinhoNight",
+    "email": "pretinho@pretinho.com"
 }
 
 ###
@@ -33,10 +35,10 @@ POST http://localhost:3003/task
 Content-Type: application/json
 
 {
-    "title": "Morder a parede",
-    "description": "Esperar os humanos se distrairem e morder a parede",
-    "limit_date": "28/08/2022",
-    "creator_user_id": "1661714945283"
+    "title": "Pedir comida",
+    "description": "Chamar os humanos as 19h30 para pedir minha janta",
+    "limit_date": "29/08/2022",
+    "creator_user_id": "1661730292298"
 }
 
 ###

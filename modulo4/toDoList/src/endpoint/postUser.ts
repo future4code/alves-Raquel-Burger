@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import addUser from "../data/addUser";
+import { User } from "../types";
 
 export default async function postUser(req: Request, res: Response) {
 try {
@@ -13,7 +14,14 @@ try {
         throw new Error("Algum dos campos possui valor inválido")
     }
 
-    await addUser(name, nickname, email)
+    const newUser: User = {
+        id: Date.now().toString(),
+        name,
+        nickname,
+        email
+    }
+
+    await addUser(newUser)
     res.status(201).send({message: `Usuário ${nickname} criando com sucesso!`})
 } catch (error: any) {
     res.status(res.statusCode || 500).send({message: error.message || error.sqlMessage})

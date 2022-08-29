@@ -1,13 +1,8 @@
+import { Task } from "../types";
 import connection from "./connection";
 
-export default async function addTask(title: string, description: string, limit_date: string, creator_user_id: string) {
+export default async function addTask(task:Task) {
     const result = await connection("TodoListTask")
-    .insert({
-        id: Date.now().toString(),
-        title,
-        description,
-        limit_date: limit_date.split('/').reverse().join("-").split('T')[0],
-        creator_user_id
-    })
+    .insert(task)
     return result
 }

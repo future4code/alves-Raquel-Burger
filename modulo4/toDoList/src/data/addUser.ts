@@ -1,9 +1,11 @@
+import { User } from "../types";
 import connection from "./connection";
 
-export default async function addUser(name:string, nickname: string, email: string) {
+export default async function addUser(user: User) {
+    const {id, name, nickname, email} = user
     const result = await connection("TodoListUser")
     .insert({
-        id: Date.now().toString(),
+        id,
         name,
         nickname,
         email
