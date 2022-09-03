@@ -12,9 +12,10 @@ export async function postPurchase(req: Request, res: Response): Promise<any> {
         }
 
         const productId = await selectProductId(product_id)
+        console.log(productId.price)
         const total_price  = productId.price * quantity
 
-        await addPurchase(user_id, productId, quantity, total_price)
+        await addPurchase(user_id, product_id, quantity, total_price)
         res.status(200).send(`Compra realizado com sucesso, valor total de ${total_price}`)
 
     } catch (error: any) {
