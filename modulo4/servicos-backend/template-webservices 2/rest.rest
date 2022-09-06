@@ -1,0 +1,10 @@
+POST https://uploaded-api.herokuapp.com/users/signup
+Content-Type: application/json
+
+{
+    "name": "Janaa",
+    "email": "jaasana@gmail.com",
+    "cep": "45625000",
+    "nickname": "jana",
+    "bairro": "teste"
+}
