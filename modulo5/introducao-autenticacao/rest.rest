@@ -24,6 +24,6 @@ GET http://localhost:3003/user/profile
 Content-Type:  application/json
 
 {
-    "id": "0320b3db-307c-4d81-9ddf-6f496beb3917
+    "id": "0320b3db-307c-4d81-9ddf-6f496beb3917"
 }
 
