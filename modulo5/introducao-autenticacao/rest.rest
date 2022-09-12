@@ -1,0 +1,29 @@
+POST http://localhost:3003/user/singup
+Content-Type: application/json
+
+{
+    "email": "testese@m5.com",
+    "password": "123456789"
+}
+
+###
+
+GET http://localhost:3003/user?teste@teste.com
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "testese@m4.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:3003/user/profile
+Content-Type:  application/json
+
+{
+    "id": "0320b3db-307c-4d81-9ddf-6f496beb3917
+}
+
