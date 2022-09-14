@@ -1,9 +1,14 @@
+export enum USER_ROLES {
+    NORMAL = "NORMAL",
+    ADMIN = "ADMIN"
+}
 
 export interface IUserDB {
     id: string
     name: string,
     email: string,
     password: string
+    role: USER_ROLES
 }
 
 export class User {
@@ -11,16 +16,20 @@ export class User {
     private name: string
     private email: string
     private password: string
+    private role: USER_ROLES.NORMAL
+
     constructor(
         id: string,
         name: string,
         email: string,
-        password: string
+        password: string,
+        role: USER_ROLES.NORMAL
     ){
         this.id = id,
         this.name = name,
         this.email = email,
-        this.password = password
+        this.password = password,
+        this.role = role
     }
 
     public getId(){
@@ -34,6 +43,9 @@ export class User {
     }
     public getPassword(){
         return this.password
+    }
+    public getRole = () => {
+        return this.role
     }
 
 

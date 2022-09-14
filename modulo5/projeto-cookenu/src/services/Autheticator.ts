@@ -5,6 +5,7 @@ dotenv.config()
 
 export interface ITokenPayload{
     id: string,
+    role: string
 }
 
 class Authenticator {
