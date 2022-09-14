@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserDataBase } from "../data/UserDataBase";
-import { User, USER_ROLES } from "../entites.ts/User";
+import { User } from "../entites.ts/User";
 import { EmailExist } from "../error/EmailExist";
 import { InvalidCredencial } from "../error/InvalidCredencial";
 import { InvalidPassword } from "../error/InvalidPassword";
@@ -122,19 +122,19 @@ export class UserController {
     getOtherProfile = async (req: Request, res: Response) => {
         try {
             const token = req.headers.authorization
-            const {id} = req.params
+            const { id } = req.params
 
             if (!token) {
                 throw new InvalidCredencial()
             }
-            if(!id){
+            if (!id) {
                 throw new MissingFields()
             }
 
             const autheticator = new Authenticator()
             const payload = autheticator.verifyToken(token)
 
-            if( !payload.role ){
+            if (!payload.role) {
                 throw new NotAuthorized
             }
 
@@ -148,10 +148,10 @@ export class UserController {
             res.status(200).send({
                 id: userDB.id, name: userDB.name, email: userDB.email
             })
- 
+
         } catch (error: any) {
             res.status(error.statusCode || 500).send({ message: error.message })
-            
+
         }
     }
 }
