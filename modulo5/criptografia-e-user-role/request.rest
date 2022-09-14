@@ -1,0 +1,30 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "name": "Norman Admin", 
+   "nickname": "Green Goblin", 
+   "email": "osbourne@oscorp.com" ,
+   "password": "ihatepeter",
+   "role": "ADMIN"
+
+}
+
+### 
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "osbourne6@oscorp.com",
+   "password": "ihatepeter"
+}
+
+###
+PUT http://localhost:3003/user/profile/
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkMDQzMTQ2LWQ0OTAtNDgxYS05YWM4LWU1ZGY4OGQ0MTg1NSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzEwNDQzNiwiZXhwIjoxNjk0NjYyMDM2fQ.wDxRrxvRM4aWinHZ5Zx2u8EDO8A0Wbq55C3vs01ZZEI"
+Content-Type: application/json
+
+{
+    "nickname": "Green Goblin",
+    "email": "novoemail@novoemail.com"
+}
