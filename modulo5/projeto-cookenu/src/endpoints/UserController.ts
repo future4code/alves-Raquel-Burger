@@ -135,7 +135,7 @@ export class UserController {
             const payload = autheticator.verifyToken(token)
 
             if (!payload.role) {
-                throw new NotAuthorized
+                throw new NotAuthorized()
             }
 
             const userDataBase = new UserDataBase()
