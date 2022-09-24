@@ -4,6 +4,11 @@ export interface IPostDB {
     user_id: string
 }
 
+export interface IPostInputDTO {
+    content: string,
+    token: string  
+}
+
 export interface ILikeDB {
     id: string,
     post_id: string,
