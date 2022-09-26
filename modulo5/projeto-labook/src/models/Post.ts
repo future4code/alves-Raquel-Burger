@@ -4,9 +4,9 @@ export interface IPostDB {
     user_id: string
 }
 
-export interface IPostInputDTO {
-    content: string,
-    token: string  
+export interface ICreatePostInputDTO {
+    token: string,  
+    content: string
 }
 
 export interface ILikeDB {
