@@ -95,3 +95,8 @@ export interface IRemoveLikeInputDTO {
 export interface IRemoveLikeOutputDTO {
     message: string
 }
+
+export interface IGetPostsInputIDtDTO {
+    token: string,
+    postId: string
+}
